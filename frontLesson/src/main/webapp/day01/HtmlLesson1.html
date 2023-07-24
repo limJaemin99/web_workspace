@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<!-- html 요소(태그) : html 문서의 최상위 부모 요소(태그)
+	 html 문서를 구성하는 요소(태그)들은 계층구조(트리구조)입니다.
+	 요소들의 중첩이 있는 형식
+-->
+<html lang="ko">
+<!-- 웹 브라우저의 screen reader 기능을 위해 lang 속성으로 html 페이지의 주요 언어 표시 -->
+<head>	<!-- head 요소(태그) : html 문서의 정보들로 구성 -->
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>	<!-- body 요소(태그) : html 문서의 컨텐츠들로 구성 -->
+    <h1>heading 제목 1</h1>	<!-- heading : 제목, 표지 -->
+    <h2>제목 2</h2>
+    <h3>제목 3</h3>
+    <h4>제목 4: : html 기본 태그들을 확인해 보겠습니다.</h4>
+    <h5>제목 5</h5>
+    <h6>제목 6</h6>
+    
+    <!-- style 속성은 css(디자인적인 내용) 설정 -->
+    <hr Style = "border:2px solid black">
+    
+    <p>paragraph 단락. 텍스트 컨텐츠를 담는 문단 요소입니다. 문서(즉 <em>브라우저</em>)의 <strong>너비에 따라</strong> 자동으로 줄바꿈을 합니다. html 문서에서는 엔터를 입력해도
+        줄바꿈이 되지 않습니다. 단락 내에서 임의로 줄바꿈을 하려면 <br>태그를 사용합니다. 문자로 !@#$%^&*()_-+={}[]|\~`<>,.?/'":; 과 같은 기호를 출력
+        하려면 잘되는지 확인해보세요. 예전 브라우저에서는 표시가 안되고 문제가 생기지만 지금은 대체로 브라우저에서 잘 표시해 줍니다. 그러나,
+        < ,> , ' ," 과 같은 기호는 문자를 표시하는 방식을 따르는 것을 권합니다. &nbsp;&lt;&gt;&quot;&copy; 와 같이 작성합니다.<br>
+        참고<a href="https://www.w3schools.com/html/html_entities.asp">링크</a><br>
+        a는 anchor의 약자입니다.
+        링크에는 href 속성값에 이동할 웹페이지의 주소를 지정합니다.이것은 URL(Uniform Resource Locator) 이라고 합니다. 웹상의 어디에 위치하는지 주소입니다. 
+        예를 들면, Mozilla's 영어 홈페이지는 https://www.mozilla.org  <a href="https://www.mozilla.org">모질라</a> <br>
+        url 은 절대 URL 또는 상대 URL 로 나타냅니다. 절대 URL은 프로토콜과 도메인네임 예를 들면 https://www.mozilla.org 부터 모두 표시하고 , 상대 URL은 도메인네임이 
+        같은 경우 생략하고 표시합니다. 예시로 절대주소는 &lt;a href="http://localhost:8081/index.html"&gt;링크 &lt;/a&gt; 이고 
+        상대주소는 &lt;a href="index.html"&gt;링크 &lt;/a&gt; 입니다.
+        url 은 img 태그의 src 속성에도 동일하게 적용합니다.
+        <br>
+        이미지 src 속성값을 절대 URL 사용 ▶ <img alt="푸바오" src="data:image/jpeg;base64,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">
+        <br>
+        이미지 src 속성값을 상대 URL 사용 ▶ <img alt="요소" src="element.png" Style="width:300px; height:150px;">
+    	<!-- 현재 url http://localhost:8081/frontLesson 과 동일한 부분은 생략하고
+    		 필요한 자원의 파일명만 지정합니다.
+    	-->
+    	<br>
+    	<br>
+    	<!-- a 태그는 다른 모든 요소를 포함하게 할 수 있습니다. 예시로 img -->
+    	<a href = "https://www.ibm.com/kr-ko/topics/web-server-application-server">
+    		<img src="../image/element.png" Style="width:300px; height:150px;">
+    	</a>
+    	<img src="../image/element.png" alt="상대 URL 테스트">
+    	<!-- http://localhost:8081/frontLesson/image/element.png -->
+    </p>
+    <h4>순서 있는 목록 ordered list 만들기</h4>
+    <ol>
+        <li>항목 A</li>
+        <li>항목 B</li>
+        <li>항목 C</li>
+        <li>항목 D</li>
+    </ol>
+    <h4>순서 없는 목록 unordered list 만들기</h4>
+    <ul>
+        <li>항목 A</li>
+        <li>항목 B</li>
+        <li>항목 C</li>
+        	<ol>
+        		<li>서브항목 C-1</li>
+        		<li>서브항목 C-2</li>
+        		<li>서브항목 C-3</li>
+        		<li>서브항목 C-4</li>
+        	</ol>
+        <li>항목 D</li>
+    </ul>
+</body>
+</html>
