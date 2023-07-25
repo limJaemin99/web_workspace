@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	
+	<style>
+		table {
+			margin: auto;
+			margin-bottom: 200px;
+            border-collapse: collapse; 
+            width: 100; 
+        }
+        
+        th,td {
+        	border: 1px solid black;
+        	padding: 10px 10px;
+        	text-align: left;
+        }
+        
+        th {
+        	background-color: lemonchiffon;
+        	text-align: center;
+        }
+        
+	</style>
+	
+</head>
+<body>
+	<h1 style="text-align: center">CSS 기본 속성(<em>properties</em>) 정리</h1>
+	<table>
+	<!-- 분류 -->
+		<tr>
+			<th><strong>속성명</strong></th>
+			<th><strong>XXX</strong></th>
+			<th><strong>속성값</strong></th>
+			<th><strong>설명</strong></th>
+		</tr>
+		
+	<!-- color -->	
+		<tr>
+			<td>color</td>
+			<td><strong>-</strong></td>
+			<td>색상 입력</td>
+			<td>글자 색 지정</td>
+		</tr>
+		
+	<!-- background-color -->	
+		<tr>
+			<td>background-color</td>
+			<td><strong>-</strong></td>
+			<td>색상 입력</td>
+			<td>배경 색 지정</td>
+		</tr>
+		
+	<!-- border-xxx-width -->
+		<tr>
+			<td rowspan="4">border-<strong>XXX</strong>-width</td>
+			<td><strong>top</strong></td>
+			<td rowspan="4">테두리 크기 입력</td>
+			<td><strong>윗쪽</strong> 방향의 테두리 두께를 지정</td>
+		</tr>
+		<tr>
+			<td><strong>bottom</strong></td>
+			<td><strong>아래쪽</strong> 방향의 테두리 두께를 지정</td>
+		</tr>
+		<tr>
+			<td><strong>left</strong></td>
+			<td><strong>왼쪽</strong> 방향의 테두리 두께를 지정</td>
+		</tr>
+		<tr>
+			<td><strong>right</strong></td>
+			<td><strong>오른쪽</strong> 방향의 테두리 두께를 지정</td>
+		</tr>
+		
+	<!-- border-style -->
+		<tr>
+			<td>border-style</td>
+			<td><strong>-</strong></td>
+			<td>선 종류 입력</td>
+			<td>테두리 선 종류 지정</td>
+		</tr>
+		
+	<!-- border-color -->
+		<tr>
+			<td>border-color</td>
+			<td><strong>-</strong></td>
+			<td>선 색상 입력</td>
+			<td>테두리 선 색 지정</td>
+		</tr>
+		
+	<!-- 테두리 안쪽(내부) 여백 -->
+		<tr>
+			<td rowspan="4">padding-<strong>XXX</strong></td>
+			<td><strong>top</strong></td>
+			<td rowspan="4">내부 여백 크기 입력</td>
+			<td>테두리 내부 <strong>윗쪽</strong> 방향의 여백 크기를 지정</td>
+		</tr>
+		<tr>
+			<td><strong>bottom</strong></td>
+			<td>테두리 내부 <strong>아래쪽</strong> 방향의 여백 크기를 지정</td>
+		</tr>
+		<tr>
+			<td><strong>left</strong></td>
+			<td>테두리 내부 <strong>왼쪽</strong> 방향의 여백 크기를 지정</td>
+		</tr>
+		<tr>
+			<td><strong>right</strong></td>
+			<td>테두리 내부 <strong>오른쪽</strong> 방향의 여백 크기를 지정</td>
+		</tr>
+		
+	<!-- 테두리 바깥쪽(외부) 여백 -->
+		<tr>
+			<td rowspan="4">margin-<strong>XXX</strong></td>
+			<td><strong>top</strong></td>
+			<td rowspan="4">외부 여백 크기 입력</td>
+			<td>테두리 외부 <strong>윗쪽</strong> 방향의 여백 크기를 지정</td>
+		</tr>
+		<tr>
+			<td><strong>bottom</strong></td>
+			<td>테두리 외부 <strong>아래쪽</strong> 방향의 여백 크기를 지정</td>
+		</tr>
+		<tr>
+			<td><strong>left</strong></td>
+			<td>테두리 외부 <strong>왼쪽</strong> 방향의 여백 크기를 지정</td>
+		</tr>
+		<tr>
+			<td><strong>right</strong></td>
+			<td>테두리 외부 <strong>오른쪽</strong> 방향의 여백 크기를 지정</td>
+		</tr>
+		
+	<!-- 추가 설명 -->
+		<tr>
+			<td colspan="4" style="text-align: center; background-color: lemonchiffon; padding-top: 0px; padding-bottom: 0px;"><h4>추가 설명</h4></td>
+		</tr>
+		
+	<!-- 테두리 작성 방식 -->	
+		<tr>
+			<td colspan="4">
+			<p><strong># 테두리 속성은 다음과 같이 한번에 작성할 수 있다.</strong></p>
+			<p>style="border-width: 1px; border-style: solid; border-color: black;"</p>	
+			<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;▶ border: 1px solid black</p>			
+			</td>
+		</tr>
+		
+	<!-- border-width 에서 방향을 정하지 않을 경우 4방향 전부 설정 -->
+		<tr>
+			<td colspan="4"><strong># border-width 에서 방향을 정하지 않을 경우 4방향 전부 설정한다.</strong></td>
+		</tr>
+	
+	<!-- 테두리 안쪽(내부)여백 방향 생략 -->
+		<tr>
+			<td colspan="4">
+				<strong>
+					<p># padding 에서 방향을 정하지 않을 경우 모두 동일한 크기만큼 내부 여백이 생긴다.</p>
+					<p> &nbsp;방향을 생략하고 값을 입력할 경우 다음과 같이 사용할 수 있다.</p>
+				</strong>
+				<p>① padding: 40px 30px 20px 10px;	▶ 시계방향으로 위,오른쪽,아래,왼쪽</p>
+				<p>② padding: 40px 20px;				▶ 첫번째 값은 위,아래/두번째 값은 좌,우</p>
+				<p>③ padding: 20px					▶ 모든 방향을 동일하게 지정</p>
+			</td>
+		</tr>
+		
+	<!-- margin은 auto 사용 가능 -->
+		<tr>
+			<td colspan="4">
+				<strong>
+					# margin 은 특별히 auto 를 설정하여 좌/우 여백을 중앙으로 배치되게 할 수 있다.
+				</strong>
+			</td>
+		</tr>
+		
+	<!-- width, height 설명 -->
+		<tr>
+			<td colspan="4">
+				<strong>
+					# width 는 너비, height 는 높이를 뜻하며, 절대값으로 px 등을 줄 수 있고, 부모의 너비 기준으로 상대값으로 %(백분율)을 줄 수 있다.
+				</strong>
+			</td>
+		</tr>
+		
+	<!-- div, span 설명 -->
+		<tr>
+			<td colspan="4">
+				<strong>
+					<p># div 는 블록 요소와 인라인 요소를 그룹으로 묶을 때 사용한다.</p>
+					<p> &nbsp;span 은 인라인 요소를 그룹으로 묶을 때 사용한다.</p>
+				</strong>
+				<p>● 인라인 요소 ⊃ 인라인 요소	▶ <strong>O</strong></p>
+				<p>● 인라인 요소 ⊃ 블록 요소		▶ <strong>X</strong></p>
+				<p>● 블록 요소 ⊃ 인라인 요소		▶ <strong>O</strong></p>
+				<p>● 블록 요소 ⊃ 블록 요소		▶ <strong>O</strong></p>
+			</td>
+		</tr>
+		
+	<!-- style 태그 안에서 값을 줄 때는 선택자를 사용한다. -->
+		<tr>
+			<td colspan="4">
+				<strong>
+				# style 태그 안에서 값을 줄 때는 <em>선택자</em> 를 사용한다.
+				</strong>
+				<p>선택자에서 'td:nth-child(3)' 처럼 n번째 자식을 선택할 수 있다.</p>
+			</td>
+		</tr>
+		
+	</table>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
