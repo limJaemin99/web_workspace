@@ -1,0 +1,32 @@
+● Day03 _ 07.26
+
+1. TableSample.html
+		+ TableSample.css
+	- class 와 id 설명
+
+2. Layout.html
+		+ Layout.css
+	- 외부평가 문제 : 홈 화면
+	- layout 에 쓰이는 스타일 연습
+
+3. MemberList.html
+		+ MemberList.css
+	- 외부평가 문제 : 회원목록 조회/수정 화면
+	- header,nav,section,footer 태그 사용
+	
+[오늘 사용한 태그]
+	<header>
+	<nav>
+	<section>
+	<footer>
+
+# class 와 id
+	[class]
+	- class 전역 속성은 공백으로 구분한 요소 클래스의 목록(여러개 클래스 이름 지정 가능)으로, 대소문자를 구분하지 않습니다. 
+	- 클래스는 CSS나 JavaScript에서 클래스 선택자나 DOM 메서드의 document.getElementsByClassName() (en-US)과 같은 메서드를 통해 요소에 접근할 수 있는 방법입니다.
+	
+	[id]
+	- id 전역 속성은 문서 전체에서 유일한 고유식별자(ID)를 정의합니다.
+	- 고유식별자의 목적은 프래그먼트 식별자(4fragmentEx.html)를 사용해 요소를 가리킬 때와 스크립트 및 스타일 적용 시 특정 요소를 식별하기 위함입니다.
+	- DOM 메서드의 document.getElementsById() 로 요소에 접근.
+	

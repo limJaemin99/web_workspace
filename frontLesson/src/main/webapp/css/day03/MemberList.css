@@ -1,0 +1,113 @@
+@charset "UTF-8";
+
+html, body {
+	height: 100vh;
+	margin: 0px;
+}
+
+/* header,nav,section,footer 를 전체 화면 기준으로 높이를 부모 태그 기준 비율로 정합니다.
+이 때 padding 과 border 를 포함하여 계산하기 위해 box-sizing : border-box; 로 합니다.
+예시 : 
+header - 20vh 
+nav - 7vh
+section - 66vh
+footer - 7vh
+nav ul - 100vh
+높이 속성을 height, min-height 각각 사용해 보고 테스트는 브라우저 크기를 다르게 하면서 
+실행해보세요.   */
+
+
+
+/* 네비게이션 아래에 줄이 생기는것을 방지하기 위해 height 의 %(상대단위)를 vh(절대단위)로 변경함 */
+
+header {
+	background-color: orange;
+	color: white;
+	box-sizing: border-box;
+	min-height: 15vh;
+	/* flexbox 레이아웃으로 자식 요소를 정렬하기 */
+	display: flex;
+	/* 수직 정렬 */
+	align-items: center;
+	/* 수평 정렬 */
+	justify-content: center;
+}
+
+nav ul {
+	list-style: none;
+	background-color: brown;
+	margin: 0px;
+	/* 자식 li에 float 속성을 지정했을 때 필요함 */
+	overflow: hidden;
+	/* height 를 100vh 로 조절하지 않으면 nav 과 높이 길이가 달라짐 */
+	/* height: 100vh; */
+	height: 7vh;
+}
+
+nav {
+	box-sizing: border-box;
+	min-height: 7vh;
+}
+
+nav ul a {
+	text-decoration: none;
+	padding: 20px;
+	display: inline-block;
+	color: white;
+}
+
+nav li{
+	float: left;
+}
+
+nav li:last-child {
+	float:right;
+	margin-right: 20px;
+}
+
+section {
+	padding: 20px;
+	background-color: azure;
+	box-sizing: border-box;
+	min-height: 71vh;
+}
+
+footer {
+	padding: 10px;
+	background-color: cornflowerblue;
+	color: white;
+	font-size: 80vh;
+	text-align: center;
+	box-sizing: border-box;
+	height: 7vh;
+}
+
+table {
+ 	margin: auto;
+	border: 1px solid black;
+	border-collapse: separate;
+	border-spacing: 2px;	
+}
+
+th,td {
+	border: 1px solid black;
+	padding: 5px;
+	text-align: center;
+}
+
+tr a {
+	text-decoration: none;
+	color: red;
+}
+
+.address {
+	padding: 5px 100px;
+}
+
+h2 {
+	text-align: center;
+}
+
+h3 {
+	text-align: center;
+}

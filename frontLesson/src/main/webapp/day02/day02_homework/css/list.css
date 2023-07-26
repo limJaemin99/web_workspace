@@ -1,7 +1,8 @@
-@charset "EUC-KR";
+@charset "UTF-8";
 
 /* body */
 body{
+	margin: 0px;
 	background-color: #E2E2E2;
 }
 
@@ -24,8 +25,8 @@ th,td {
 }
 
 a {
-	color: white; /* 글자색을 흰색으로 변경 */
-	text-decoration: none; /* 기본 밑줄 제거 */
+	color: white;
+	text-decoration: none;
 }
 
 /* Header */
@@ -42,12 +43,12 @@ nav {
 }
 
 nav a{
-	  float: left;
-  display: block;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
+	float: left;
+	display: block;
+	color: #f2f2f2;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
 }
 
 nav a:hover{

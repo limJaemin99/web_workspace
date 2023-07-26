@@ -1,0 +1,60 @@
+@charset "UTF-8";
+
+body{
+	margin: 0px;
+}
+
+/* 블록 요소의 width 는 기본이 화면(부모태그)의 100% */
+/* 블록 요소의 height 는 컨텐츠 크기만큼. 높이는 padding 으로 정하기 */
+
+.header {
+	padding: 20px 20px;
+	background-color: orange;
+	color: white;
+}
+
+ul {
+	list-style: none;
+	background-color: brown;
+	margin: 0px;
+	/* 자식 li에 float 속성을 지정했을 때 필요하다. */
+	overflow: hidden;	/* li 의 float 했을때 ul의 높이가 0으로 바뀜 */
+}
+
+/* ul 태그의 자손 */
+.nav a {
+	text-decoration: none;	/* a 태그(링크)의 밑줄 제거 */
+	padding: 20px;
+	display: inline-block;	/* 인라인 요소는 블록으로 바꿔야 패딩이 적용됨 */
+	color: white;
+}
+
+.nav li:last-child {
+	float:right;
+	margin-right: 20px;
+}
+
+.section {
+	padding: 20px;
+	background-color: azure;
+	/* 컨텐츠 내용만큼 높이가 지정되는것을 최소 높이를 지정하여 바꾸기 */
+	min-height: 650px;
+}
+
+.nav li {
+	/* float 을 지정하면 부모 태그 ul의 높이가 0이 된다.*/
+	/* ul태그 overflow 를 설정하기 */
+	float: left;
+}
+
+.footer {
+	padding: 10px;
+	background-color: cornflowerblue;
+	color: white;
+	font-size: 80%;
+	text-align: center;
+}
+
+h2 {
+	text-align: center;	
+}

@@ -1,7 +1,8 @@
-@charset "EUC-KR";
+@charset "UTF-8";
 
 /* body */
 body{
+	margin: 0px;
 	background-color: #E2E2E2;
 }
 
@@ -38,12 +39,12 @@ nav {
 }
 
 nav a{
-	  float: left;
-  display: block;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
+	float: left;
+	display: block;
+	color: #f2f2f2;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
 }
 
 nav a:hover{
