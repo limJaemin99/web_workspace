@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>쇼핑몰 회원관리 ver1.0</title>
+	<link rel="styleSheet" href="./layout.css">
+	<link rel="styleSheet" href="./update.css">
+</head>
+<body>
+<!-- header -->
+	<header>
+		<h2>쇼핑몰 회원관리 ver1.0</h2>
+	</header>
+
+<!-- nav -->
+	<nav>
+		<ul>
+			<li><a href="./memberRegister.html">회원등록</a></li>
+			<li><a href="./memberList.html">회원목록조회/수정</a></li>
+			<li><a href="./memberSales.html">회원매출조회</a></li>
+			<li><a href="./index.html">홈으로.</a></li>
+		</ul>
+	</nav>
+
+<!-- section -->
+	<section>
+		<h3>홈쇼핑 회원 정보 수정</h3>
+		<table>
+			<tr>
+				<th><strong>회원번호(자동발생)</strong></th>
+				<td><input type="text" value="100001" disabled="disabled"></td>
+			</tr>
+			<tr>
+				<th><strong>회원성명</strong></th>
+				<td><input type="text" placeholder="이름"></td>
+			</tr>
+			<tr>
+				<th><strong>회원전화</strong></th>
+				<td><input type="text" size="26" placeholder="전화번호"></td>
+			</tr>
+			<tr>
+				<th><strong>회원주소</strong></th>
+				<td><input type="text" size="40" placeholder="주소"></td>
+			</tr>
+			<tr>
+				<th><strong>가입일자</strong></th>
+				<td><input type="text" placeholder="가입일자"></td>
+			</tr>
+			<tr>
+				<th><strong>고객등급[A:VIP,B:일반,C:직원]</strong></th>
+				<td><input type="text" maxlength="1" placeholder="등급"></td>
+			</tr>
+			<tr>
+				<th><strong>도시코드</strong></th>
+				<td><input type="text" maxlength="2" placeholder="도시코드"></td>
+			</tr>
+			<tr>
+				<td colspan="2" class="button">
+					<button type="button" onclick="showDialog()">수정</button>
+					<button type="button" onclick="location.href='memberList.html'">조회</button>
+				</td>
+			</tr>
+		</table>
+	</section>
+
+<!-- footer -->
+	<footer>
+		<h3>HRDKOREA Copyright&copy;2016 All rights reserved. Human Resources Development Service of Korea</h3>
+	</footer>
+	
+<script>
+    function showDialog() {
+        var dialog = document.querySelector('dialog');
+
+        dialog.showModal();
+
+        dialog.addEventListener('click', function (event) {
+            if (event.target.tagName === 'BUTTON') {
+                dialog.close();
+                redirectToHome();
+            }
+        });
+    }
+    
+    function redirectToHome() {
+        window.location.href = './index.html';
+    }
+</script>
+
+<dialog>
+    <h3>웹 페이지 메세지</h3>
+    <p>회원정보수정이 완료되었습니다!</p>
+    <button>확인</button>
+</dialog>
+
+</body>
+</html>
