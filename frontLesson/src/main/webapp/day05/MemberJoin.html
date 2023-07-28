@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Form - 회원가입</title>
+	<link rel="styleSheet" href="../css/day04/FormSample.css">
+	<!-- 자바스크립트 자동완성 기능을 이클립스는 외부파일에서만 가능하다. -->
+	<script type="text/javascript" src="../js/memberJoin.js">
+	</script>
+</head>
+<body>
+	<h3>회원가입</h3>
+			<!--  ↓↓↓↓↓↓↓↓↓↓↓↓ 테스트용 : html 파일은 form이 보낸 데이터를 받을 수 없다. -->
+	<form action="success.html">
+	
+	<!-- form 데이터 전송 방식은 method라고 한다.
+		▶ 'get'(기본값) 방식으로 하면 데이터를 url과 함께 보낸다.	# 주로 조회목적으로 사용
+		▶ 'post' 방식으로 하면 네트워크 패킷에 담아서 보낸다.		# 주로 저장목적으로 사용
+	 -->
+	
+	<!-- form 태그는 서버로 보낼 입력요소들을 묶는 역할을 한다.
+		 form action 은 서버의 URL(요청파일이 xxx.jsp), method 는 전송 방식이다.
+		 서버로 보내는것은 type="submit"인 버튼을 클릭하면 전송된다.
+	-->
+		<table>
+			<tr>
+				<td><label for="lblName">이름</label></td>
+				<td><input type="text" id="lblName" value="홍길동" name="name"></td>
+			</tr>
+			<tr>
+				<td><label for="lblPass">패스워드</label></td>
+				<td><input type="password" id="lblPass" name="password"></td>
+			</tr>
+			<tr>
+				<td><label for="lblEmail">이메일</label></td>
+				<td><input type="email" id="lblEmail" name="email"></td>
+			</tr>
+			<tr>
+				<td><label for="lblAge">나이</label></td>
+				<!-- min="15" max="99" 설정 없이 자바스크립트에서 검사하기 -->
+				<td><input type="number" id="lblAge" name="age"></td>
+			</tr>
+			<tr>
+				<td><label for="lblAddr">지역(주소)</label></td>
+				<td>
+					<select id="lblAddr" name="address">
+						<option>서울</option>
+						<option>인천</option>
+						<option>대전</option>
+						<option>대구</option>
+						<option>광주</option>
+						<option>부산</option>
+						<option>기타</option>
+				</select>
+				</td>
+			</tr>
+			<tr>
+				<td><label>성별</label></td>
+				<td>
+					<input type="radio" name="gender" id="lblMale" value="male">
+					<label for="lblMale">남성</label>
+					<input type="radio" name="gender" id="lblFemale" value="female">
+					<label for="lblFemale">여성</label>
+					<input type="radio" name="gender" id="lblNo" value="unknown" checked="checked">
+					<label for="lblNo">모름</label>
+				</td>
+			</tr>
+			<tr>
+				<td><label>취미</label></td>
+				<td>
+					<input type="checkbox" id="lblFootball" name="hobby" value="축구">
+					<label for="lblFootball">축구</label>
+					<input type="checkbox" id="lblBaseball"name="hobby" value="야구" checked="checked">
+					<label for="lblBaseball">야구</label>
+					<input type="checkbox" id="lblRun" name="hobby" value="달리기">
+					<label for="lblRun">달리기</label>
+					<input type="checkbox" id="lblSwim" name="hobby" value="수영">
+					<label for="lblSwim">수영</label>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<!-- 유효성검사하는 함수 func_join()을 실행하고 통과하면 서버로 보낸다.
+						 자바스크립트에서 frm.submit() 실행하여 제출한다.
+					-->							
+					<!-- 버튼 type="button"으로 변경하기 (메소드에서 submit을 줬기 때문) -->
+					<button onclick="func_join()" type="button">가입하기</button>
+					<button type="reset">다시쓰기</button>
+					<button type="button" onclick="alert('hello!\n테스트입니다.')">테스트</button>
+				</td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>

@@ -1,0 +1,115 @@
+● Day05 _ 07.28
+
+1. MemberJoin.html
+	- day04 의 FormSample.html 파일 복사함
+
+2. success.html
+	- (테스트용 : html 파일은 form이 보낸 데이터를 받을 수 없다)
+		MemberJoin.html 의 실행 완료 후 넘어가는 페이지
+
+3. memberJoin.js
+	- MemberJoin.html의 입력 폼(입력요소)에 사용자가 입력한 값들을 검사하는 JavaScript
+
+[오늘 사용한 JavaScript 용어]
+	● 변수
+		- const : 값은 변경할 수 없고, 객체는 재할당 불가능 / 일반적으로 요소를 저장하는 변수 형식으로 사용
+		- let 	: 값 변경 또는 객체 재할당이 가능한 일반적인 변수
+		- var	: (구)버전 JavaScript에서 사용하던 변수 선언 방식
+	
+	● 함수
+		- 이벤트 함수	: function 함수명()	▶ ex) '가입하기'버튼의 onclick 이벤트에 대해 실행하는 함수
+		- 일급 함수	: 함수를 변수에 대입시켜서 사용하는 형식
+		- 콜백 함수	: 메소드 또는 함수의 인자로 함수가 쓰일 때
+	
+	● 그 외
+		- alert : 메시지 창 띄우기
+		- console.log(변수명) : 해당 변수명의 값을 출력
+		- focus() : 해당 변수로 지정된 입력 요소가 focus를 갖는다
+		- action = '주소' : 해당 주소를 실행
+		- submit()	: 서버로 데이터를 보냄
+			ㄴ ※ 이때, button 은 type='button' 으로 바꿔야 함
+
+
+# 자바스크립트로 할 수 있는 것들
+	- html, CSS 로만 작성된 정적인 웹 컨텐츠에 대해 동적인 기능으로 컨텐츠를 조작할 수 있다.
+	- 사용자가 입력한 값을 서버로 보내기 전에 유효한 값인지 검사할 수 있다.
+	- 버튼이 클릭되었을 때 무엇을 할 것인지에 대한 명력을 작성한다.
+
+# 자바스크립트의 기본 객체
+	▶ 1. window 객체 : 브라우저 창에 대한 객체
+		- 메소드 : alert, confirm 등
+		- 하위 객체 : document, console, history, location 등
+		- 프로퍼티 : innerWidth, innerHeight, screenX, screenY 등
+		※ 메소드, 하위객체 등을 사용할 때 window는 생략하고 사용한다.
+			ex) window.confirm("실행하시겠습니까?") = confirm("실행하시겠습니까?")
+			
+		◎ 예제 : 브라우저를 실행하여 다음 명령을 실행해봅시다.
+			- 22+33
+			- alert("hello~")
+			- confirm("실행하시겠습니까?")	=> '확인' 또는 '취소' 클릭하고 결과 확인하기
+			- console.log('브라우저 콘솔 테스트합니다.')		▶ 출력문
+			- location.href = 'https://www.naver.com'	▶ 해당 주소로 이동
+			- history.back() 		▶ 뒤로가기
+			- history.forward()		▶ 앞으로 가기
+			- window.innerHeight	▶ 높이
+			- window.innerWidth		▶ 너비	=> 전체 요소 선택한 후 크기값이 일치하는지 확인하기
+			
+	▶ 2. document 객체 : 웹 페이지(문서)에 대한 객체
+		● 주요 메소드
+			★ getElementById			▶ 지정된 ID로 요소를 가져오기. 리턴이 단일 요소
+			  getElementsByClassName	▶ 지정된 class 이름으로 요소'들'을 가져오기. 리턴이 배열(컬렉션)형식 다중요소
+			  getElementsByTagName		▶ 지정된 tag 이름으로 요소'들'을 가져오기. 리턴이 배열
+			★ querySelector				▶ 선택자로 가져오기 (단일요소 가져올 때 사용). CSS에서 사용한 선택자 기호 모두 동일하게 사용 가능
+			★ querySelectorAll			▶ 선택자로 가져오기 (여러개 가져올 때 사용 - 태그이름). 클래스 이름 사용
+	
+		● 하위 객체 forms	▶ 웹 문서에 포함된 form 객체'들'을 리턴
+		● 프로퍼티 URL		▶ 웹 페이지나 웹 사이트의 주소(Uniform Resource Locator)를 나타내는 속성.
+						  웹 페이지의 주소를 문자열 형태로 저장하고, 웹 브라우저에서 해당 URL을 이용하여 웹 페이지를 불러오고 표시하는 데 사용
+		
+		+ 현재 URL 문자열 가져오는 속성 ▶ document.URL
+		
+		◎ 예제 : day04의 파일 FormSample.html을 브라우저에서 실행하고 개발자 도구 콘솔창에 아래와 같은 명령을 실행해봅시다.
+		
+			━━━━━━━━━━━━━━━━ ★ 웹 문서에서 요소 가져오는 메소드 (JavaScript 에서 매우 중요) ━━━━━━━━━━━━━━━━
+					★★★	- document.getElementByID('lblEmail')
+					★★★	- document.getElementsByTagName('input')
+					★★★	- document.querySelector('#lblAge')			# ▶ ID
+					★★★	- document.querySelectorAll('label')		공백 ▶ tag
+						- document.querySelectorAll('.location')	. ▶ class		
+						- document.forms
+						- document.forms[0] : form들 중에서 0번 인덱스 가져오기
+						
+					● forms 객체로 가져올때만 name 속성을 활용하는 방법
+						- document.forms[0].age			: 지정된 form에서 name 속성이 age인 것을 가져오기
+						- document.forms[0].age.value	: 가져온 input 요소의 value 값
+						- document.forms[0].name.value
+						
+					● form의 checkbox 요소는 배열이다.
+						- document.forms[0].hobby
+					[X]	- document.forms[0].hobby.value
+							ㄴ document.forms[0].hobby.value	=> ''
+					[O]	- document.forms[0].hobby[0].value	=> 요소 인덱스를 지정해야 value를 알 수 있다.	
+					[O]	- document.forms[0].hobby[1].value		
+					[O]	- document.forms[0].hobby[2].value		
+								
+					● [비교] radio 버튼
+						- document.forms[0].gender			▶ 요소들 배열
+						- document.forms[0].gender.value	▶ 선택한 값 리턴
+						
+					● html 요소의 내용을 바꿔보기
+						- document.forms[0].age.value = 33				▶ 나이가 33으로 변경됨
+						- document.forms[0].hobby[3].checked = false	▶ hobby[3]의 체크가 해제됨
+						- document.forms[0].address.value = 
+								
+			━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+	
+	### 문제 1 : 맨 위의 '회원가입' 제목 요소를 가져오려면?
+		- document.getElementsByTagName('h3')
+		- document.querySelector('h3')
+		- document.querySelector('h3').innerHTML	▶ h3 태그의 콘텐츠(텍스트)
+		
+	### 문제 2 : 맨 위의 '회원가입' 제목 요소를 변경하려면?
+		- document.querySelector('h3').innerHTML = '회원등록'					▶ 회원가입 → 회원등록 변경
+		- document.querySelector('h3').innerHTML = '<button>테스트</button>'	▶ 버튼으로 변경
+		- document.querySelector('h3').style.color = 'green'				▶ 요소의 style 변경
+		- document.querySelector('h3').style.border = '1px solid gray'		▶ 테두리 적용		
