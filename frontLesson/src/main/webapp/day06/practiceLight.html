@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>연습 : LightOnOff</title>
+</head>
+<body>
+
+	<h3>다음 동작을 실행하는 연습 : 함수 정의</h3>
+	
+	<ol>
+		<li>태그(요소)의 컨텐츠 변경 : innerHTML</li>
+		<li>태그(요소)의 속성 변경 : ex) img 태그의 src 속성값 변경</li>
+		<li>태그(요소)의 스타일 변경 : ON/OFF 글꼴 색상 변경</li>
+	</ol>
+		<p>※ 위의 3가지를 하기 위해서는 HTML 태그 요소를 가져와야 한다.	- document.getElementByID<p>
+	
+	<div style="margin:20px; border: 1px solid gray;">
+		<h4>현재 상태 : <span id="state" style="color: red;">OFF</span></h4>
+		<img alt="light" src="../image/pic_bulboff.gif" id="light"
+				style="cursor: pointer;" onclick="lightToggle()">
+		<br>
+		<button onclick="lightOn()">불을 켜주세요.</button>
+		<button onclick="lightOff()">불을 꺼주세요.</button>
+	</div>
+	
+	<!-- 이 위치의 script 명령들은 body 의 태그들이 모두 배치된 후에 실행된다. -->
+	
+	<script type="text/javascript">
+		//여러번 사용하게 될 요소 img, span 은 const 변수에 대입시켜 사용하기
+		const light = document.getElementById('light')
+		const state = document.getElementById('state')
+		
+		function lightToggle(){
+			//현재 상태를 알 수 있는 변수 대신에 state.innerHTML 값을 검사하여
+				//lightOn() 또는 lightOff() 실행하기
+			if(state.innerHTML == 'ON') lightOff()
+			else lightOn()
+		}
+		
+		function lightOn(){
+			//이미지 바꾸기, 글꼴 색상 바꾸기, 텍스트 변경하기
+			light.src = '../image/pic_bulbon.gif'
+			state.style = 'color : blue'
+			state.textContent = 'ON'
+		}
+
+		function lightOff(){
+			light.src = '../image/pic_bulboff.gif'
+			state.style = 'color : red'
+			state.textContent = 'OFF'
+		}
+	</script>
+</body>
+</html>

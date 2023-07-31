@@ -63,9 +63,7 @@
 			 }
 		 }	// 메소드 또는 함수의 인자로 함수가 쓰일 때 ▶ 콜백함수(callback) 함수라고 함
 	 
-	 frm.hobby.forEach(
-		 func_hobby
-	 )
+	 frm.hobby.forEach(func_hobby)
 	 
 	 if(cnt == 0) {
 		 alert('취미는 1개 이상 선택해주세요.')

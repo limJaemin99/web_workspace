@@ -1,0 +1,65 @@
+● Day06 _ 07.31
+
+1. js_var.html	+	js_let.html
+	- var 과 let 변수 선언 동작 비교
+	
+2. js_function.html
+	- 자바스크립트 함수
+	
+3. practiceLight.html
+	- 자바스크립트 함수로 이미지 파일인 전구를 켜기/끄기
+	
+4. errorTest.html
+	- <script> 위치에 따라 오류가 발생(지역변수 사용 불가능 예시)
+	
+5. 변수스콥체인.html
+	- 스콥 체인을 사용하면 <script> 가 <head> 안에 있어도 지역변수 사용 가능
+
+6. callbackExam.html
+	- 콜백함수 복습 + interval 관련 메소드 (시간 관련)
+
+7. js_basic.html
+	- 자바스크립트 키워드, 변수 시작 문자, 연산자, 데이터 타입 설명 + thead/tbody 설명(주석)
+	
+8. js_numberEx.html
+		+ js_numberEx.js
+	- 자바스크립트의 간단한 number 형식 연습
+	
+9. js_date.html
+	- 자바스크립트의 날짜
+	
+	
+# 자바스크립트는 변수 선언시 지정된 형식이 없다. 동일한 변수명에 여러가지 형식 데이터를 저장할 수 있다.
+
+# document.write() 메소드
+	- html 문서에 태그 없이 출력하는 메소드
+	
+# var
+	- 동일한 변수 중복선언 가능		▶ O
+	- 변수 선언 키워드 생략 가능	▶ O
+	- 지역변수 개념이 없음		▶ X
+
+# let
+	- 동일한 변수 중복선언 불가능	▶ X
+	- 변수 선언 키워드 생략 가능	▶ O
+	- 지역변수 개념이 있음		▶ O
+
+# Number()
+	- Number() : 문자열을 number 타입으로 변환
+		▶ ex) NumbeR('12') = 12, Number('abc') = NaN(Not a Number) 리턴 
+	- value 또는 innerHTML 로 가져오는것은 문자열
+	- 뺄셈, 곱셈, 나눗셈은 자동으로 데이터 캐스팅 후 연산
+	- 덧셈은 캐스팅 직접 안하면 문자열 연결 연산
+	
+# <input> 태그
+	- 서버에 데이터를 제출하지 않을 경우 <form> 태그를 사용하지 않아도 된다.
+
+# padStart(), padEnd() 메소드
+	- String 타입에 형식을 지정하는 메소드
+		ex) month.toString().padStart(2,'0')
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[오늘 해야할 것들]
+1. 자바스크립트의 배열 메소드를 10개 테스트하기
+2. 시험 자료 정리하기	

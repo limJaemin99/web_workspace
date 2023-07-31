@@ -100,6 +100,8 @@
 						- document.forms[0].age.value = 33				▶ 나이가 33으로 변경됨
 						- document.forms[0].hobby[3].checked = false	▶ hobby[3]의 체크가 해제됨
 						- document.forms[0].address.value = 
+					
+					● 요소의 속성 변경은 document.querySelector('h3').속성이름 = '값' 형식으로 변경한다.
 								
 			━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 	

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>오류 연습 : LightOnOff</title>
+	
+	<!-- 이 위치의 script 명령들은 body 의 태그 요소들이 배치되기 전에 실행된다. -->
+	
+	<script type="text/javascript">
+
+		function lightToggle(){
+			//함수 스콥(함수 지역변수)이지만, 특이하게 이 함수 안에서 호출되는 lightOn, lightOff 함수에서는
+				//아래 지역변수 2개를 사용할 수 있다.(= scope chain)
+			const light = document.getElementById('light')
+			const state = document.getElementById('state')
+			
+			if(state.innerHTML == 'ON') lightOff()
+			else lightOn()
+		}
+		
+		function lightOn(){
+			//함수 스콥(함수 지역변수)
+			const light = document.getElementById('light')
+			const state = document.getElementById('state')
+
+			light.src = '../image/pic_bulbon.gif'
+			state.style = 'color : blue'
+			state.textContent = 'ON'
+		}
+
+		function lightOff(){
+			//함수 스콥(함수 지역변수)
+			const light = document.getElementById('light')
+			const state = document.getElementById('state')
+
+			light.src = '../image/pic_bulboff.gif'
+			state.style = 'color : red'
+			state.textContent = 'OFF'
+		}
+	</script>
+</head>
+<body>
+
+	<h3>다음 동작을 실행하는 연습 : 함수 정의</h3>
+	
+	<ol>
+		<li>태그(요소)의 컨텐츠 변경 : innerHTML</li>
+		<li>태그(요소)의 속성 변경 : ex) img 태그의 src 속성값 변경</li>
+		<li>태그(요소)의 스타일 변경 : ON/OFF 글꼴 색상 변경</li>
+	</ol>
+		<p>※ 위의 3가지를 하기 위해서는 HTML 태그 요소를 가져와야 한다.	- document.getElementByID<p>
+	
+	<div style="margin:20px; border: 1px solid gray;">
+		<h4>현재 상태 : <span id="state" style="color: red;">OFF</span></h4>
+		<img alt="light" src="../image/pic_bulboff.gif" id="light"
+				style="cursor: pointer;" onclick="lightToggle()">
+		<br>
+		<button onclick="lightOn()">불을 켜주세요.</button>
+		<button onclick="lightOff()">불을 꺼주세요.</button>
+	</div>
+</body>
+</html>

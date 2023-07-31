@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>자바스크립트 함수</title>
+</head>
+<body>
+	<h3>자바스크립트 함수</h3>
+	<script type="text/javascript">
+	
+	//함수를 대입하는 변수는 const 로 선언하는게 일반적이다.
+	
+	//형식 1 : 함수 정의를 변수에 대입(변수명이 자동으로 함수 이름)
+		const myfunc1 = function(x) {	//x는 매개변수 선언이다.
+			document.write('myfunc1 실행<br>')
+			return x*11+22
+		}
+	
+	//형식 2 : 변수에 대입 없이 함수 선언
+		function myfunc2(x) {
+			document.write('myfunc2 실행<br>')
+			return x*11+23
+		}
+	
+	//형식 3 : 화살표 함수(arrow function)
+		const myfunc3 = (x) => {
+			document.write('myfunc3 실행<br>')
+			return x*11+24
+		}
+	
+		
+	// 정의된 함수들 실행
+	let result = myfunc1(10)
+	document.write('result = ' + result + '<br>')
+	document.write(`result = ${result}<br>`)	//백틱 ` 기호를 사용하면 + 문자열 연결 연산을 쉽게 할 수 있다.
+						   //↑↑......↑ 출력하고싶은 변수값은 ${} 안에 작성.(${} 표현식 기호 안에서 수식 사용가능) 
+	document.write('함수 실행 끝')
+	
+	document.write('<br>')
+	
+	result = myfunc2(10)
+	document.write('result = ' + result + '<br>')
+	document.write(`result = ${result}<br>`)	//백틱 ` 기호를 사용하면 + 문자열 연결 연산을 쉽게 할 수 있다.
+						   //↑↑......↑ 출력하고싶은 변수값은 ${} 안에 작성.(${} 표현식 기호 안에서 수식 사용가능) 
+	document.write('함수 실행 끝')
+	
+	document.write('<br>')
+	
+	result = myfunc3(10)
+	document.write('result = ' + result + '<br>')
+	document.write(`result = ${result}<br>`)	//백틱 ` 기호를 사용하면 + 문자열 연결 연산을 쉽게 할 수 있다.
+						   //↑↑......↑ 출력하고싶은 변수값은 ${} 안에 작성.(${} 표현식 기호 안에서 수식 사용가능) 
+	document.write('함수 실행 끝')
+
+	</script>
+
+</body>
+</html>

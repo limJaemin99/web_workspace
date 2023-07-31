@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>자바스크립트의 number 형식 연습</title>
+	<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+</head>
+<body style="padding: 20px;">
+	<h3>자바스크립트 산술 계산기</h3>
+	<div class="form-group row">
+		<div class="col-xs-2">
+			<label for="operand1">operand<small>(피연산자)</small>1</label>
+			<input class="form-control" id="operand1" type="text">
+		</div>
+		<div class="col-xs-2">
+			<label for="operator">operator<small>(연산자)</small></label>
+			<select id="operator" class="form-control">
+				<option value="+">+</option>
+				<option value="-">-</option>
+				<option value="*">×</option>
+				<option value="/">÷</option>
+			</select>
+		</div>
+		<div class="col-xs-2">
+			<label for="operand2">operand<small>(피연산자)</small>2</label>
+			<input class="form-control" id="operand2" type="text">
+		</div>
+		<div class="col-xs-2">
+			<button id="executeBtn" class="btn btn-success btn-xs">실행</button>
+			<strong> &nbsp;결과</strong>
+			<input class="form-control" id="result" type="text" readonly>
+		</div>
+	</div>
+	<!-- input 요소들이 form 태그 없이 사용된다. -->
+	<!-- ㄴ 이유 : 이 예제는 서버에 데이터를 제출하지 않는다. ▶ 따라서 form 태그를 사용하지 않는다. -->
+	<script type="text/javascript" src="../js/day06/js_numberEx.js"></script>
+</body>
+</html>
