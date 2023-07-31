@@ -1,0 +1,10 @@
+@charset "UTF-8";
+
+.test, .explain, .method {
+	text-align: left;
+	padding: 10px;
+}
+
+#result {
+	padding: 10px 30px;
+}

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>자바스크립트 배열</title>
+	<link rel="styleSheet" href="../css/array.css">
+	<link rel="styleSheet" href="../css/properties.css">
+	<link rel="styleSheet" href="../css/non_mutatorMethods.css">
+</head>
+<body>
+<!-- header -->
+	<header>
+		<h1>&lt;JavaScript Array&gt;</h1>
+	</header>
+	
+<!-- nav -->	
+	<nav>
+		<ul>
+			<li><strong><a href="./properties.html">Array 객체의 속성</a></strong></li>
+			<li><strong><a href="./mutatorMethods.html">변경 메소드</a></strong></li>
+			<li><strong><a href="./non_mutatorMethods.html">비변 메소드</a></strong></li>
+			<li><strong><a href="./array.html">홈으로</a></strong></li>
+		</ul>
+	</nav>
+	
+<!-- section -->
+	<section>
+		<h2>비변 메소드</h2>
+		<table>
+			<tr>
+				<th>메소드</th>
+				<th>설명</th>
+				<th>Test - 콤마( , )로 구분</th>
+				<th>실행</th>
+				<th id="result">결과</th>
+			</tr>
+			<tr>
+				<td class="method"><strong>forEach( )</strong></td>
+				<td class="explain">
+					배열의 각 요소에 대해 <strong>지정된 함수를 순서대로 한 번씩 호출</strong>
+					<br>
+					※ 예시에서는 각 요소들을 띄어쓰기로 구분하여 출력하는 함수 사용
+				</td>
+				<td class="test">
+					<input type="text" id="inputText1" placeholder="배열의 내용을 입력">
+				</td>
+				<td><button onclick="forEach()">실행</button></td>
+				<td id="result1"></td>
+			</tr>
+			<tr>
+				<td class="method"><strong>filter( )</strong></td>
+				<td class="explain">
+					배열의 각 요소에 대해 주어진 <strong>함수를 호출하여 그 결과가 true인 요소들로 이루어진 <em>새로운 배열</em>을 반환</strong>
+					<br>
+					※ 예시에서는 주어진 배열에서 짝수만 필터링
+				</td>
+				<td class="test">
+					<input type="text" id="inputText2" placeholder="숫자만 입력">
+				</td>
+				<td><button onclick="filter()">실행</button></td>
+				<td id="result2"></td>
+			</tr>
+			<tr>
+				<td class="method"><strong>find( )</strong></td>
+				<td class="explain">
+					배열의 요소를 탐색하면서 <strong>주어진 판별 함수를 만족하는 <em>첫번째 값</em>을 반환</strong>
+					<br>
+					※ 예시에서는 주어진 배열에서 짝수를 필터링하여 첫번째 값을 반환
+				</td>
+				<td class="test">
+					<input type="text" id="inputText3" placeholder="숫자만 입력">
+				</td>
+				<td><button onclick="find()">실행</button></td>
+				<td id="result3"></td>
+			</tr>
+			<tr>
+				<td class="method"><strong>findIndex( )</strong></td>
+				<td class="explain">
+					<strong>find( )와 동일</strong>하나, 값 대신 <strong>인덱스 숫자</strong>를 반환
+					<br>
+					※ 예시에서는 주어진 배열에서 짝수를 필터링하여 첫번째 인덱스를 반환
+				</td>
+				<td class="test">
+					<input type="text" id="inputText4" placeholder="숫자만 입력">
+				</td>
+				<td><button onclick="findIndex()">실행</button></td>
+				<td id="result4"></td>
+			</tr>
+			<tr>
+				<td class="method"><strong>includes( )</strong></td>
+				<td class="explain">
+					배열에 특정 값이 포함되어있는지 확인하여 true/false 반환
+				</td>
+				<td class="test">
+					<input type="text" id="inputText5" placeholder="기존 배열의 데이터를 입력">
+					<input type="text" id="inputText6" placeholder="찾을 데이터를 입력">
+				</td>
+				<td><button onclick="includes()">실행</button></td>
+				<td id="result5"></td>
+			</tr>
+			<tr>
+				<td class="method"><strong>join( )</strong></td>
+				<td class="explain">배열의 모든 요소를 <strong>주어진 구분자로 합침</strong></td>
+				<td class="test">
+					<input type="text" id="inputText7" placeholder="배열의 데이터를 입력">
+					<input type="text" id="inputText8" placeholder="구분자를 입력">
+				</td>
+				<td><button onclick="join()">실행</button></td>
+				<td id="result6"></td>
+			</tr>
+		</table>
+	</section>
+	
+<!-- footer -->
+	<footer>
+		<h4 id="date"></h4>
+	</footer>
+	
+		<script>
+	const dateElement = document.getElementById("date");
+
+	function displayCurrentTime() {
+	  const currentDate = new Date().toLocaleString();
+	  dateElement.textContent = "현재 시간 : " + currentDate;
+	}
+
+	displayCurrentTime();
+
+	setInterval(displayCurrentTime, 1000);
+	</script>
+	
+	<script type="text/javascript" src="../js/non_mutatorMethods.js"></script>
+</body>
+</html>
