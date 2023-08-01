@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>20.DOM</title>
+    <!-- fav.ico 즐겨찾기 아이콘 설정 -->
+    <link rel="shortcut icon" href="../image/fav.ico" type="image/x-icon">
+    <link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <style>
+       div li:first-child{	/* 선택자 테스트 (공백 : 자손, > : 자식) */
+            color: brown;
+        }
+
+    </style>
+</head>
+<body>
+ <h4>DOM : Document Object Model</h4>
+ <h3>Element Object 의 프로퍼티</h3>
+ <table>
+    <tbody>
+        <tr><td>사나</td></tr>
+        <tr><td>나연</td></tr>
+        <tr><td>은하</td></tr>
+        <tr><td>신비</td></tr>
+    </tbody>
+</table>
+ <div id="kpop" style="padding: 10px;width:400px;margin-left: 220px;background-color: antiquewhite;float:left" >
+	    <h4>KPOP</h4>
+        <ul>
+            <li>트와이스</li>
+            <li>에스파</li>
+            <li>비비즈</li>
+        </ul>
+        <ul>
+            <li>사나</li>
+            <li>나연</li>
+            <li>은하</li>
+            <li>신비</li>
+        </ul>
+</div>
+<hr>
+
+<pre style="padding: 10px;width:70%;margin: auto;">
+	const kpop = document.getElementById('kpop') //document.querySelector('#kpop')
+        console.log(kpop)
+        console.log('1.childNodes')
+        console.log(kpop.childNodes)    
+        //h4,ul,ul, 앞뒤에 있는 엔터가 text 자식 노드
+        console.log('2.children')
+        console.log(kpop.children)      //1번결과에서 text(엔터) 제외
+        console.log('3.첫번째 자식')
+        console.log(kpop.firstChild)
+        console.log('4.첫번째 자식요소')
+        console.log(kpop.firstElementChild)
+        console.log('5.마지막 자식')
+        console.log(kpop.lastChild)
+        console.log('6.마지막자식요소')
+        console.log(kpop.lastElementChild)
+        
+        const child1 = kpop.lastElementChild
+        console.log('7.마지막 자식의 컨텐츠')
+        console.log(child1.innerHTML)
+        console.log('8.첫번째 자식요소의 컨텐츠')
+	console.log(kpop.firstElementChild.innerHTML)
+        console.log('9.첫번째 자식의 형제 요소')
+        console.log(kpop.firstElementChild.nextElementSibling.innerHTML)
+        console.log('10.마지막 자식의 형제 요소')
+        console.log(kpop.lastElementChild.nextElementSibling)  //다음형제
+        console.log(kpop.lastElementChild.previousElementSibling)  //앞에 나온 형제
+</pre>
+<script type="text/javascript">
+        console.log('1.childNodes')
+		console.log(kpop.childNodes)
+        console.log('2.children')
+		console.log(kpop.children)
+        console.log('3.첫번째 자식')
+		console.log(kpop.firstChild)
+        console.log('4.첫번째 자식요소')
+		console.log(kpop.firstElementChild)
+        console.log('5.마지막 자식')
+		console.log(kpop.lastChild)
+        console.log('6.마지막자식요소')
+		console.log(kpop.lastElementChild)
+		const child1 = kpop.lastElementChild
+		console.log('7.마지막 자식요소의 컨텐츠')
+		console.log(child1.innerHTML)
+		console.log(kpop.lastElementChild.innerHTML)
+		console.log('8.첫번째 자식요소의 컨텐츠')
+		console.log(kpop.firstElementChild.innerHTML)
+		console.log('9.첫번째 자식의 형제 요소')
+		console.log(kpop.firstElementChild.nextElementSibling.innerHTML)
+		console.log('10.마지막 자식의 형제 요소')
+		console.log(kpop.lastElementChild.nextElementSibling)  //다음형제
+		console.log(kpop.lastElementChild.previousElementSibling)  //앞에 나온 형제
+         
+	//메소드 예시 : 이것을 이용하여 ArraySample.html 과 ObjectArraySample.html 의 시간표를 추가할 수 있다.([방법 2] 내용)
+		const tr1 = document.querySelector('tr:first-child')	//선택자로 요소 가져오기
+        console.log(tr1)
+        const newtd = document.createElement("td")	//요소 만들기
+        //createElement('태그이름') : 지정된 이름의 태그 요소 만들기 ▶ <td></td>
+        newtd.innerHTML='테스트'
+        tr1.appendChild(newtd)		//tr1 변수로 지정된 요소의 마지막 자식 요소로 추가하기
+
+        const tr2 = document.querySelector('tr:nth-child(2)')
+        console.log(tr2)
+        const newtd2 = document.createElement("td")
+        newtd2.innerHTML='테스트'
+        tr2.appendChild(newtd2)
+</script>
+ </body>
+</html>
+<!--
+    const table = document.getElementById("myTable");
+
+    // 첫 번째 행을 선택합니다.
+    const firstRow = table.querySelector("tr:first-child");
+
+// 새로운 셀(td)을 생성합니다.
+const newCell = document.createElement("td");
+
+// 셀에 텍스트 노드를 추가합니다. (선택사항)
+const cellText = document.createTextNode("새로운 셀");
+newCell.appendChild(cellText);
+
+// 새로운 셀(td)을 첫 번째 행(tr)의 마지막 자식으로 추가합니다.
+firstRow.appendChild(newCell);
+
+
+-->

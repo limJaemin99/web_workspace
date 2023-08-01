@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>배열 데이터로 html 문서 만들기</title>
+	<style type="text/css">
+		table { width: 800px; }
+		th { width: 13%; background-color: tomato; color: white;}
+		td { width: 10%; }
+		th, td { border: 1px solid tomato; padding: 7px 12px; text-align: center; }
+	</style>
+</head>
+<body>
+	<h3>배열 데이터로 html 문서 만들기</h3>
+	<p>배열의 값을 이용하여 스케줄표 html 문서를 만들어 보는 예시이다.
+		함수를 사용하지 않고 html 문서가 로드될 때 실행된다.
+	</p>
+	<pre>	<!-- 블록 요소는 pre 태그 안에서 적당하지 않음(사용불가) -->
+		<strong>자바스크립트 배열</strong>
+		
+	</pre>
+	<hr>
+		<h4>오늘의 스케줄</h4>
+		<table>
+			<tr id="time">	<!-- 시간 -->
+				
+			</tr>
+			<tr id="todo">	<!-- 할일 -->
+				
+			</tr>
+		</table>
+		<button id="todoAddBtn">스케줄 추가</button>
+	<script type="text/javascript">
+		const time = ['09:00','11:00','12:30','14:00','16:45']	/* {} = X ┃ [] = O */
+		const todo = ['수업','과제','점심식사','주간회의','자료조사']
+		
+		/* ${} 안에는 변수, 수식 등을 포함하며 이것을 감싸는 기호가 백틱(`)이다.*/
+		
+		//첫번째 행에 들어갈 th,td 만들어서 하나의 문자열 result 생성
+		let result = '<th>TIME</th>'
+		//배열을 대상으로 반복할 때 자주 사용하는 [forEach]
+		//원본 : time.forEach(function(value){})
+		time.forEach((value) => {
+			result += `<td>${value}</td>`
+		})
+		document.getElementById('time').innerHTML = result
+		
+		//두번째 행에 들어갈 th,td 만들어서 하나의 문자열 result 생성
+		result = '<th>TODO</th>'
+		todo.forEach((value) => {
+			result += `<td>${value}</td>`
+		})
+		document.getElementById('todo').innerHTML = result
+		
+		
+		
+		document.getElementById('todoAddBtn').addEventListener('click',()=>{
+			//인자가 없는 화살표 함수 형식
+			const atime = prompt('시간을 입력하세요.')	//★★★★★ prompt : 입력값을 받는 윈도우 대화상자 ★★★★★
+			const atodo = prompt('할일을 입력하세요.')
+			
+			//배열에 추가하기
+			time.push(atime)
+			todo.push(atodo)
+			
+			
+			
+			//적용하기
+			//[방법 1-1] : 위에서 사용했던 forEach()를 다시 실행
+			//		▶ 이 코드를 실행하기 전에 먼저 있던 내용을 지워야 함(DOM 메소드)
+/* 			result = '<th>TIME</th>'
+			time.forEach((value) => {
+				result += `<td>${value}</td>`
+			})
+			document.getElementById('time').innerHTML = result
+			
+ 			result = '<th>TODO</th>'
+			todo.forEach((value) => {
+				result += `<td>${value}</td>`
+			})
+			document.getElementById('todo').innerHTML = result  */
+
+			
+			//[방법 1-2] : 1-1방법과 비슷한 작동방식(컨텐츠를 불러와 뒤에 추가할 내용을 입력)
+/* 			document.getElementById('time').innerHTML = document.getElementById('time').innerHTML + `<td>${atime}</td>`
+			document.getElementById('todo').innerHTML = document.getElementById('todo').innerHTML + `<td>${atodo}</td>` */
+			
+			
+			//[방법 1-3] : 1-1 방법을 함수로 만들어서 사용
+/*			function tableMake(){
+				result = '<th>TIME</th>'
+				time.forEach((value) => {
+					result += `<td>${value}</td>`
+				})
+				document.getElementById('time').innerHTML = result
+				
+				result = '<th>TODO</th>'
+				todo.forEach((value) => {
+					result += `<td>${value}</td>`
+				})
+				document.getElementById('todo').innerHTML = result 
+			} 
+			
+			tableMake() */
+			
+			
+			//[방법 2] : 새로 추가된 항목만 table에 추가
+			//table에 첫번째 자식 tr을 찾아서 td 자식(atime)을 새로 추가하기
+			//		  두번째 자식 tr을 찾아서 td 자식(atodo)을 새로 추가하기
+			//출력 방향이 세로방향이고, 추가는 가로방향으로 추가되므로 위와 같이 구현해야 함
+			
+			const tr1 = document.querySelector('tr:first-child')
+			const newtd1 = document.createElement('td')
+			newtd1.innerHTML = atime
+			tr1.appendChild(newtd1)
+			
+			const tr2 = document.querySelector('tr:last-child')
+			const newtd2 = document.createElement('td')
+			newtd2.innerHTML = atodo
+			tr2.appendChild(newtd2)
+		})		
+	</script>
+</body>
+</html>

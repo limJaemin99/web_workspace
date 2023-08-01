@@ -1,0 +1,18 @@
+● Day07 _ 08.01
+
+1. ArraySample.html
+	- 배열 데이터로 html 문서 만들기 + 화살표 함수 연습
+
+2. js_object.html ★★★★★(나중에 json과 연결되는 내용이므로 중요)★★★★★	
+	- 자바스크립트 객체 정의와 사용하기 + Object 설명
+
+3. ObjectArraySample.html
+	- 배열로 스케줄표 만들기
+	
+4. DOMSample.html	
+	- Element Object 의 프로퍼티
+	
+	
+[오늘 사용한 함수]
+	- prompt : 입력값을 받는 윈도우 대화상자
+	
