@@ -3,27 +3,58 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Date Form Sample</title>
+    <style>
+		table {
+			margin: 50px 50px;
+			border: 2px dashed black;
+			border-spacing: 0px;
+			background-color: #f5fffa;
+		}
+		
+		th {
+			border-right: 1px solid black;
+			text-align: center;
+		}
+		
+		#enter {
+			padding: 10px 20px;
+			border-bottom: 1px solid black;
+			border-top: 1px solid black;
+		}
+		
+		td {
+			padding: 15px 20px;
+			text-align: left;
+		}
+		
+		
+    </style>
 </head>
 <body>
 <form action="">
-	<label for="selectNight">숙박일수</label>
-	<select name="days" id="selectNight">
-		<option value="0">선택</option>
-		<option value="1">1박</option>
-		<option value="2">2박</option>
-		<option value="3">3박</option>
-		<option value="4">4박</option>
-	</select>
-	
-	<br>
-	
-	<label for="enterDate">입실날짜 : </label>
-	<input type="date" name="start" id="enterDate">
-	<br>
-	<label for="outDate">퇴실날짜 : </label>
-	<input type="date" name="end" id="outDate" disabled>
-	<br>
-</form>	
+        <table>
+            <tr>
+                <th><label for="selectNight">숙박일수</label></th>
+                <td>
+                    <select name="days" id="selectNight">
+                        <option value="0">선택</option>
+                        <option value="1">1박</option>
+                        <option value="2">2박</option>
+                        <option value="3">3박</option>
+                        <option value="4">4박</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th id="enter"><label for="enterDate">입실날짜</label></th>
+                <td><input type="date" name="start" id="enterDate"></td>
+            </tr>
+            <tr>
+                <th><label for="outDate">퇴실날짜</label></th>
+                <td><input type="date" name="end" id="outDate" disabled></td>
+            </tr>
+        </table>
+    </form>
 
 <!-- 1. 입실 날짜는 오늘 날짜로 초기화 하기 -->
 <!-- 2. 퇴실 날짜는 선택한 숙박일수를 더하기	ex) 8/2 입실 + 3박 = 8/5 -->
@@ -32,26 +63,70 @@
 <!-- 4-1. 입실 날짜는 오늘 이전 날짜는 선택하지 못하게 하기 (input 태그에 min 속성) -->
 <!-- 4-2. 입실 날짜는 오늘부터 3달 이후로만 선택할 수 있게 하기 (input 태그에 max 속성) -->
 <!-- ※ 참고 : input 태그 type="date"인 경우 value 는 YYYY-MM-DD 로 설정 -->
-<script type="text/javascript">
 
-	let currentDate = new Date()	//현재 시간
-	let year = currentDate.getFullYear()
-	let month = ('0' + (currentDate.getMonth() + 1)).slice(-2)
-	let date = ('0' + currentDate.getDate()).slice(-2)
-	let today = `${year}-${month}-${date}`	//오늘 날짜
-	
-	let select = Number(document.getElementById('selectNight').value)
-	
-	
-	console.log(today)
-	// 1. 입실 날짜는 오늘 날짜로 초기화 하기
-		document.getElementById('enterDate').value = today
-	
-	// 2. 퇴실 날짜는 선택한 숙박일수를 더하기	ex) 8/2 입실 + 3박 = 8/5
-		currentDate.setDate(currentDate.getDate()+select)
+<script>
+    document.addEventListener('DOMContentLoaded',() => {	// ★ DOMContentLoaded : 웹 페이지가 완전히 로드되었을 때 발생하는 이벤트
+        const $selectNight = document.getElementById('selectNight')
+        const $enterDate = document.getElementById('enterDate')
+        const $outDate = document.getElementById('outDate')
+
+        
+        
+        // 1. 입실 날짜는 오늘 날짜로 초기화 하기
+        const ISOtoday = new Date()
+		ISOtoday.setHours(ISOtoday.getHours() + 9)	//GMT+9
+
+		const today = ISOtoday.toISOString().split('T')[0]
+		$enterDate.value = today
 		
-	// 4-1. 입실 날짜는 오늘 이전 날짜는 선택하지 못하게 하기 (input 태그에 min 속성)
-		document.getElementById('enterDate').min = today
+		
+		
+        // 2. 퇴실 날짜는 선택한 숙박일수를 더하기 (ex: 8/2 입실 + 3박 = 8/5)
+        $selectNight.addEventListener('change',() => {
+            const selectNight = parseInt($selectNight.value)
+            
+            if (selectNight > 0) {
+                const enterDate = new Date($enterDate.value)
+                const outDate = new Date(enterDate)
+                outDate.setDate(enterDate.getDate() + selectNight)	//입실날짜 + 숙박일수
+                
+                const outDateISO = outDate.toISOString().split('T')[0]
+                $outDate.value = outDateISO
+            } else {
+                $outDate.value = ''
+            }
+        })
+
+        // ※ click, change 이벤트의 차이점
+        	// ▶ click은 선택하려고 누를때마다 값이 찍힌다.
+        	// ▶ change는 선택이 바뀔때마다 값이 찍힌다.
+        
+        // 3. 퇴실 날짜는 select 태그에서 숙박일수를 선택하면 계산해서 자동으로 표시하기
+        $enterDate.addEventListener('change',() => {
+            const selectNight = parseInt($selectNight.value)
+            
+            if (selectNight > 0) {
+                const enterDate = new Date($enterDate.value)
+                const outDate = new Date(enterDate)
+                outDate.setDate(enterDate.getDate() + selectNight)	//입실날짜 + 숙박일수
+                
+                const outDateISO = outDate.toISOString().split('T')[0]
+                $outDate.value = outDateISO
+            }
+        })
+
+        
+        
+        // 4-1. 입실 날짜는 오늘 이전 날짜는 선택하지 못하게 하기 (input 태그에 min 속성)
+        $enterDate.setAttribute('min', today)
+
+        // 4-2. 입실 날짜는 오늘부터 3달 이후로만 선택할 수 있게 하기 (input 태그에 max 속성)
+        const ISOmaxDate = new Date(today)
+        ISOmaxDate.setMonth(ISOmaxDate.getMonth() + 3)
+        const maxDate = ISOmaxDate.toISOString().split('T')[0]
+        
+        $enterDate.setAttribute('max', maxDate)
+    })
 </script>
 </body>
 </html>
