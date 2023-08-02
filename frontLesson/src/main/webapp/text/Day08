@@ -1,0 +1,22 @@
+● Day08 _ 08.02
+
+
+1. jsonBasic.html
+		+ jsonBasic.js
+	- json의 메소드 parse(), stringify() 설명
+
+2. kakao_API_Sample.html
+	- 카카오 API 요청 예시 및 설명
+
+3. kakao_API_UI_Sample.html
+		+ kakao_API_UI_Sample.js
+	- 검색 기능 및 결과 출력하는 내용 추가
+	
+4. dateFormSample.html
+	- 숙제	
+	
+	
+	
+# 상태코드 참고 : https://ko.wikipedia.org/wiki/HTTP
+
+# 숙제하기

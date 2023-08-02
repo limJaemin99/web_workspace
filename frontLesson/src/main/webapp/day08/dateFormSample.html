@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Date Form Sample</title>
+</head>
+<body>
+<form action="">
+	<label for="selectNight">숙박일수</label>
+	<select name="days" id="selectNight">
+		<option value="0">선택</option>
+		<option value="1">1박</option>
+		<option value="2">2박</option>
+		<option value="3">3박</option>
+		<option value="4">4박</option>
+	</select>
+	
+	<br>
+	
+	<label for="enterDate">입실날짜 : </label>
+	<input type="date" name="start" id="enterDate">
+	<br>
+	<label for="outDate">퇴실날짜 : </label>
+	<input type="date" name="end" id="outDate" disabled>
+	<br>
+</form>	
+
+<!-- 1. 입실 날짜는 오늘 날짜로 초기화 하기 -->
+<!-- 2. 퇴실 날짜는 선택한 숙박일수를 더하기	ex) 8/2 입실 + 3박 = 8/5 -->
+<!-- 3. 퇴실 날짜는 select 태그에서 숙박일수를 선택하면 계산해서 자동으로 표시하기 -->
+<!-- 	▶ click, change 이벤트 둘 다 사용해보기 -->	
+<!-- 4-1. 입실 날짜는 오늘 이전 날짜는 선택하지 못하게 하기 (input 태그에 min 속성) -->
+<!-- 4-2. 입실 날짜는 오늘부터 3달 이후로만 선택할 수 있게 하기 (input 태그에 max 속성) -->
+<!-- ※ 참고 : input 태그 type="date"인 경우 value 는 YYYY-MM-DD 로 설정 -->
+<script type="text/javascript">
+
+	let currentDate = new Date()	//현재 시간
+	let year = currentDate.getFullYear()
+	let month = ('0' + (currentDate.getMonth() + 1)).slice(-2)
+	let date = ('0' + currentDate.getDate()).slice(-2)
+	let today = `${year}-${month}-${date}`	//오늘 날짜
+	
+	let select = Number(document.getElementById('selectNight').value)
+	
+	
+	console.log(today)
+	// 1. 입실 날짜는 오늘 날짜로 초기화 하기
+		document.getElementById('enterDate').value = today
+	
+	// 2. 퇴실 날짜는 선택한 숙박일수를 더하기	ex) 8/2 입실 + 3박 = 8/5
+		currentDate.setDate(currentDate.getDate()+select)
+		
+	// 4-1. 입실 날짜는 오늘 이전 날짜는 선택하지 못하게 하기 (input 태그에 min 속성)
+		document.getElementById('enterDate').min = today
+</script>
+</body>
+</html>
