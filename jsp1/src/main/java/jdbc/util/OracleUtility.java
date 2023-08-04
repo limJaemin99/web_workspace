@@ -9,14 +9,14 @@ public class OracleUtility {	//Connection 생성하여 제공(return)해주고, 
 	public static Connection getConnection() {
 		Connection conn = null;
 		String url = "jdbc:oracle:thin:@localhost:1521:xe";
-//		String driver = "oracle.jdbc.driver.OracleDriver";
+		String driver = "oracle.jdbc.driver.OracleDriver";
 		String user = "iclass";
 		String password = "0419";
 		
 		try {
-//			Class.forname(driver);
+			Class.forName(driver);
 			conn = DriverManager.getConnection(url, user, password);
-		} catch (SQLException e) {
+		} catch (SQLException | ClassNotFoundException e) {
 			System.out.println("데이터베이스 연결 및 사용에 문제가 생겼습니다 : "+e.getMessage());
 		}
 		
