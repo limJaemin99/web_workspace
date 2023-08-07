@@ -1,6 +1,7 @@
 package sample.DAO;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -64,9 +65,29 @@ public class MemberDAO {
 	}//joinMember end
 	
 	
+	public MemberDTO selectOne(int custno) throws SQLException {		//수정할 데이터 가져오기
+		Connection conn = OracleUtility.getConnection();
+		String sql = "select * from MEMBER_TBL_02 where custno = ?";
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ps.setInt(1,custno);
+		MemberDTO result = null;
+		ResultSet rs = ps.executeQuery();
+		if(rs.next()) {
+			String custname = rs.getString(2);
+			String phone = rs.getString(3);
+			String address = rs.getString(4);
+			Date joindate = rs.getDate(5);
+			String grade = rs.getString(6);
+			String city = rs.getString(7);
+			result = new MemberDTO(custno, custname, phone, address, joindate, grade, city);
+		}
+		return result;
+	}
+	
+	
 	public List<MemberDTO> selectAll() throws SQLException{
 		Connection conn = OracleUtility.getConnection();
-		String sql = "select custno , custname , phone , address , to_char(joindate,'yyyy-mm-dd') as joindate , grade , city "
+		String sql = "select custno , custname , phone , address , to_char(joindate,'yyyy-mm-dd') as joindate , decode(grade,'A','VIP','B','일반','C','직원') , city "
 				+ "from MEMBER_TBL_02 "
 				+ "order by custno";
 		PreparedStatement ps = conn.prepareStatement(sql);

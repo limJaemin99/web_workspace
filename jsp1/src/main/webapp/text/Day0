@@ -1,3 +1,16 @@
 ● Day0 _ 08.04
 
 
+● <%--  --%> : 주석
+● <%  %>	: 스크립트릿(JAVA 코드 삽입)
+● <%!  %>	: 선언(변수,메소드의 선언)
+● <%=  %>	: 표현식(결과값 출력)
+● <%@  %>	: 지시자(페이지 속성 지정)
+
+● <jsp:action>  </jsp:action> : 액션태그(페이지 삽입,공유,자바 빈 사용 등)
+	▶ <jsp:include>  </jsp:include> : include(다른 페이지의 실행 결과를 현재 페이지에 포함시켜줌)
+	▶ <jsp:forward>  </jsp:forward> : forward(페이지간의 제어를 이동시켜줌)
+	▶ <jsp:useBean>  </jsp:useBean> : useBean(자바빈(java bean)을 페이지에서 사용할 수 있게 해줌)
+	▶ <jsp:setProperty>  </jsp:setProperty> : setProperty(Property 값을 세팅할 때 사용)
+	▶ <jsp:getProperty>  </jsp:getProperty> : getProperty(Property 값을 가져올 때 사용)
+	▶ <jsp:param>  </jsp:param> : param(include,forward 안에서 사용되며 인자를 추가할 때 사용)
