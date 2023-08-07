@@ -127,7 +127,6 @@ public class MemberDAO {
 			conn.setAutoCommit(true);
 			ps.close();
 			conn.close();
-			System.out.println("__회원 수정이 완료되었습니다!");
 		} catch (SQLException e) {
 			System.out.println("예외 : "+e.getMessage());
 			try {
