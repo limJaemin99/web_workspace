@@ -32,9 +32,9 @@
 <!-- nav -->
 	<nav>
 		<ul>
-			<li><a href="./memberRegister.html">회원등록</a></li>
-			<li><a href="./memberList.jsp">회원목록조회/수정</a></li>
-			<li><a href="./memberSales.html">회원매출조회</a></li>
+			<li><a href="MemberRegister.jsp">회원등록</a></li>
+			<li><a href="MemberList.jsp">회원목록조회/수정</a></li>
+			<li><a href="MemberSales.jsp">회원매출조회</a></li>
 			<li><a href="./index.html">홈으로.</a></li>
 		</ul>
 	</nav>
@@ -48,13 +48,16 @@
 				※ memberSave.jsp 파일에는 자바코드만 작성하고 태그는 필요없다.
 				※ memberUpdate.jsp 에서 보내는 파라미터 이름은 input 태그의 name 속성이다.
 		-->
-		<form action="memberSave.jsp" method="post">
+		<form action="UpdateSave.jsp" method="post">
+		<!-- 이후 자바코드 작성할 때 가독성, 편리성을 위해 input name 이름은 DTO 클래스 변수명과 동일하게 하기 ★★★★★ 
+			 UpdateSave.jsp 의 파라미터 저장 변수도 DTO와 동일하게 하기
+		 -->
 		<table>										
 			<tr>									
 				<th><label for="lblNo"><strong>회원번호(자동발생)</strong></label></th>
 				<!-- memberList.jsp 에서 보낸 파라미터를 받아 custno 변수에 저장한다. -->
 				<!-- 그리고 value 에서 출력하기 -->
-				<td><input type="number" id="lblNo" value="<%= custno %>" name="custno" disabled></td>
+				<td><input type="number" id="lblNo" value="<%= custno %>" name="custno" readonly="readonly"></td>
 			</tr>
 			<tr>
 				<th><label for="lblName"><strong>회원성명</strong></label></th>
@@ -70,7 +73,7 @@
 			</tr>
 			<tr>
 				<th><label for="lblJoin"><strong>가입일자</strong></label></th>
-				<td><input type="text" id="lblJoin" name="joinDate" placeholder="가입일자" value="<%= dto.getJoindate() %>"></td>
+				<td><input type="text" id="lblJoin" name="joinDate" placeholder="가입일자" value="<%= dto.getJoindate() %>" disabled></td>
 			</tr>
 			<tr>
 				<th><label for="lblGrade"><strong>고객등급[A:VIP,B:일반,C:직원]</strong></label></th>
@@ -83,7 +86,7 @@
 			<tr>
 				<td colspan="2" class="button">
 					<button>수정</button>
-					<button type="button" onclick="location.href='memberList.jsp'">조회</button>
+					<button type="button" onclick="location.href='MemberList.jsp'">조회</button>
 				</td>
 			</tr>
 		</table>

@@ -33,7 +33,7 @@ public class MemberDAO {
 	public void joinMember(MemberDTO mDto) {
 		
 		Connection conn = OracleUtility.getConnection();
-		String sql = "insert into MEMBER_TBL_02 values(joinmem_seq.nextval, ? , ? , ? , sysdate , ? , ?)";
+		String sql = "insert into MEMBER_TBL_02 values(?, ? , ? , ? , sysdate , ? , ?)";
 		PreparedStatement ps;
 		
 		try {
@@ -41,11 +41,12 @@ public class MemberDAO {
 			
 			ps = conn.prepareStatement(sql);
 		
-			ps.setString(1, mDto.getCustname());
-			ps.setString(2, mDto.getPhone());
-			ps.setString(3, mDto.getAddress());
-			ps.setString(4, mDto.getGrade());
-			ps.setString(5, mDto.getCity());
+			ps.setInt(1, mDto.getCustno());
+			ps.setString(2, mDto.getCustname());
+			ps.setString(3, mDto.getPhone());
+			ps.setString(4, mDto.getAddress());
+			ps.setString(5, mDto.getGrade());
+			ps.setString(6, mDto.getCity());
 			ps.execute();
 			
 			conn.commit();
@@ -139,8 +140,21 @@ public class MemberDAO {
 	}//updateMember end
 	
 	
-	
-	
-	
+	public int nextCustno() throws SQLException {
+		Connection conn = OracleUtility.getConnection();
+		String sql = "SELECT MAX(custno)+1 FROM MEMBER_TBL_02";
+		PreparedStatement ps = conn.prepareStatement(sql);
+		
+		ResultSet rs = ps.executeQuery();
+		int result = 0;
+		
+		if(rs.next()) result = rs.getInt(1);
+		
+		conn.close();
+		ps.close();
+		rs.close();
+		
+		return result;
+	}
 	
 }//class end

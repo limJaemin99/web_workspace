@@ -21,9 +21,9 @@
 <!-- nav -->
 	<nav>
 		<ul>
-			<li><a href="./memberRegister.html">회원등록</a></li>
-			<li><a href="./memberList.jsp">회원목록조회/수정</a></li>
-			<li><a href="./memberSales.html">회원매출조회</a></li>
+			<li><a href="MemberRegister.jsp">회원등록</a></li>
+			<li><a href="MemberList.jsp">회원목록조회/수정</a></li>
+			<li><a href="MemberSales.jsp">회원매출조회</a></li>
 			<li><a href="./index.html">홈으로.</a></li>
 		</ul>
 	</nav>
@@ -61,7 +61,7 @@
 				<% for(MemberDTO dto : list) { %>
 				<tr>
 					<td>
-						<a href="./memberUpdate.jsp?custno=<%= dto.getCustno() %>">
+						<a href="MemberUpdate.jsp?custno=<%= dto.getCustno() %>">
 							<%= dto.getCustno() %>
 						</a>
 					</td>
