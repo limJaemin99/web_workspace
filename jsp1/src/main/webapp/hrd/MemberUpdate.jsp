@@ -8,7 +8,7 @@
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
 	<link rel="styleSheet" href="./layout.css">
-	<link rel="styleSheet" href="./update.css">
+	<link rel="styleSheet" href="./Update.css">
 </head>
 <body>
 <!-- 정보 수정 화면은 현재값을 먼저 보여주고 수정할 수 있게 한다. -->

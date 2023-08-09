@@ -28,4 +28,10 @@ public class MyUser {
 		this.address = address;
 	}
 	
+	
+	
+	@Override
+	public String toString() {
+		return String.format("MyUser [uname=%s, age=%d, address=%s]", uname, age, address);
+	}
 }

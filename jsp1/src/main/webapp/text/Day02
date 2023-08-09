@@ -57,3 +57,18 @@
 	
 	2) jsp:param
 		- jsp:include 에서 포함시키는 jsp에 파라미터를 전달할 때 사용
+
+	3) jsp:useBean
+		- ★★★★★ scope : 4가지 자바빈즈가 사용될 수 있는 영역 설정 (pageContext,request,session,application) ★★★★★
+		- 속성 id : 자바빈의 id/변수명	class : 자바빈(객체)으로 만들어질 패키지명/클래스 지정
+			▶ jsp:setProperty
+				- 값 저장 (getParameter 메소드 + setter 메소드 실행)
+				- 속성 종류
+					◎ property : 자바빈을 만든 클래스의 필드(변수) 이름
+					◎ name : 자바빈 id를 설정
+					◎ param : input 태그의 name
+					◎ property="*" 로 하면 모든 파라미터를 가져올 수 있다.
+						(단, input 태그 name 속성, dto 클래스의 필드명을 통일시켜야 한다)
+			▶ jsp:getProperty
+				- 출력
+				※ RegisterSave.jsp 에서 getParameter 대신에 사용했음
