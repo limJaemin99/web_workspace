@@ -27,7 +27,7 @@ public class JCustomerDTO {
 	
 	@Override
 	public String toString() {
-		return String.format("customer_ID=%s, name=%s, email=%s, age=%s, reg_date=%s, password=%s",
+		return String.format("customer_ID=%s, name=%s, email=%s, age=%d, reg_date=%s, password=%s",
 				customer_ID, name, email, age, reg_date, password);
 	}
 

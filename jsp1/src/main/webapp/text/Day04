@@ -1,0 +1,79 @@
+● Day04 _ 08.10
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1. JSTL - Java (S)erver (P)age Standard Tag Library
+	1) core 태그 : 값 저장과 출력, 실행 제어
+	2) fmt 태그 : format . 출력 포맷 설정하기 (숫자, 날짜 출력형식 / Locale 설정)
+	3) fn : 함수 . 문자열 메소드를 함수 형태로 사용하기 (자바의 문자열 메소드와 상당부분 일치)
+
+2. EL : ${} 은 getAttribute 로 값을 가져와서 출력한다.
+		애트리뷰트는 자바빈과 동일하게 4개의 scope 저장소에서 보관되는 데이터.
+		객체의 프로퍼티는 getter 메소드 없이 바로 가져온다.
+		getAttribute 메소드의 리턴타입은 Object 이며, ${} 은 타입 변환도 한다.
+		
+	- El 기본 객체
+		● param : 요청매개변수 값 저장. 매개변수가 배열일때는 paramValues
+		● cookie : 쿠키값 저장
+		● pageContext : 현재 페이지의 정보 pageContext 객체
+		● pageScope : page scope 데이터 저장소 지정
+		● requestScope : request scope 데이터 저장소 지정
+		● sessionScope : session scope 데이터 저장소 지정
+		● applicationScope : application scope 데이터 저장소 지정
+	
+	※ ${} 에서 scope 지정이 없으면 기본값은 page ▶ request ▶ session ▶ application
+	※ 현재 jsp 페이지에서 request,session 객체를 el 로 사용하기 위해서는
+		▶ pageContext.request
+		▶ pageContext.session
+
+★ 참고 : spring 프레임워크는 jsp 를 고려하지 않고 처리되는 부분이 많아서
+		외부 라이브러리 태그도 jstl 을 사용할 수는 있지만, 다른 방법이 더 권장된다.
+		다른 방법이란 jsp 를 사용하지 않고, 그냥 html 을 사용하고 여기에 다른 라이브러리(Thymeleaf 등)
+
+	▶ 애트리뷰트는 서버에 저장되는 데이터. 저장소 4개 있음. ${애트리뷰트 이름}
+		${pageScope.name}			pageContext.getAttribute("name");
+		${requestScope.name}		request.getAttribute("name");
+		${sessionScope.name}		session.getAttribute("name");
+		${applicationScope.name}	application.getAttribute("name");
+		${name}
+		
+		- 저장은 request.setAttribute(), 가져오기는 request.getAttribute
+
+----------------------------------------------------------------------
+	데이터가			데이터가			데이터가			데이터가
+	pageContext		request			session			application
+	객체에			객체에			객체에			객체에
+	저장될 때			저장될 때			저장될 때			저장될 때
+	pageScope		requestScope	sessionScope	applicationScope
+----------------------------------------------------------------------
+	데이터			데이터			데이터			데이터
+----------------------------------------------------------------------
+	jsp페이지			요청전달			브라우저			애플리케이션
+	에서 사용			할 때 사용			단위로 사용			전체에서 사용
+----------------------------------------------------------------------
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+
+1. 16jstlSample.jsp
+	- core 태그 테스트
+	
+2. [member] list.jsp  +  listView.jsp
+	- 16jstlSample.jsp 의 마지막 forEach 를 사용하는 방법
+	
+3. [member] list.jsp  +  MemberList.jsp
+	- c:forEach 를 사용하여 기존 MemberList.jsp 를 수정
+
+4. 16jstlSample.jsp
+	- fmt 태그 테스트
+	- fn 태그 테스트
+
+5-1. 17loginView.jsp  +  18loginAction.jsp  +  index.jsp
+	- 토큰인증 방식으로 로그인하는 방법
+	- 로그인 성공시 session 을 통해 로그인 정보 저장 및 전달
+	
+5-2. 5-1파일  +  logout.jsp
+	- JSESSIONID 항목을 삭제하여 로그아웃 기능 테스트
+	
+6. 19session.jsp
+	- session 테스트
