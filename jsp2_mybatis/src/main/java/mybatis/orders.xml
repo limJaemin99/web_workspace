@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="order">	<!-- ★★★★★ namespace 설정 필수 ★★★★★ -->
+ 	<!-- SQL 실행에 필요한 값 또는 조회 결과값과 자바 객체를 매핑(mapping)한다. -->
+ 	<!-- id 는 매핑에 대한 식별자 (개발자가 정하는 것) -->
+ 	
+ 	<!-- mybatis 는 자동 매핑이다. 따라서 컬럼명과 dto, 매개변수명이 동일해야한다.
+ 		 단, insert 할 때는 quantity 처럼 정수 타입이 1개일때는 매핑을 해줄 수 있다. -->
+ 	
+ 	<select id="selectOrderByEmail" resultType="String">
+ 		SELECT
+ 			DISTINCT email
+ 		FROM
+ 			orders
+ 	</select>
+ 	
+ 	<select id="selectByEmail" resultType="sample.DTO.OrderDTO" parameterType="String">
+ 		SELECT *
+ 		FROM
+ 			orders
+ 		WHERE
+ 			email = #{email}
+ 	</select>
+ 	
+ 	<!-- insert , update , delete 는 기본 리턴타입이 int -->
+ 	<insert id="insert" parameterType="sample.DTO.OrderDTO">
+ 		INSERT INTO 
+ 			orders
+ 		VALUES
+ 			(#{email} , #{pcode} , #{quantity} , SYSDATE)
+ 	</insert>
+ 	
+ 	<!-- ${} : 출력 , #{} : 저장(파라미터 변수명 표시) -->
+ 	
+ 	
+ 	
+ 	
+ 	
+ </mapper>
+ 
+ 
+ 
+ 
+ 
+ 

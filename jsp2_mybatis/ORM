@@ -1,0 +1,20 @@
+● ORM 프레임워크 (Object-Relational Mapping / ORM)
+
+	▶ Object - 자바의 객체
+	▶ Relational - 데이터베이스의 테이블
+	▶ Mapping - 사상(연관,변환,대응)
+
+	※ 결론 : 데이터베이스의 테이블과 자바의 객체 사이의 변환을 자동으로 해주는 기능
+
+# ORM 프레임워크 중 하나로 Mybatis 를 사용하여, 기존 jdbc 방식으로 직접 코딩했던 변환을 쉽게 한다.
+
+# mybatis.org 에서 라이브러리 .jar 다운로드 및 사용에 대한 설명을 볼 수 있다.
+	- mybatis.org ▶ product ▶ mybatis3 download ▶ github 에서 3.5.11 Assets 로 zip 다운
+			▶ .jar 파일만 따로 빼서 lib 폴더에 추가
+
+# mybatis 소스파일
+	- SqlSessionBean.java	: 개발자가 작성한 파일. SqlSession 구현 객체를 생성하는것이 목적.
+	- db.properties			: 
+	- mybatis-config.xml	: 
+	- orders.xml			: 
+
