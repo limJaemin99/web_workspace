@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="products">
+	<insert id="insert" parameterType="ProductDTO">	<!-- resultType 기본값 : int -->
+		INSERT INTO wproduct
+		VALUES (#{pname},#{price},SYSDATE,#{picture})
+	</insert>
+	
+	<select id="getProducts" resultType="ProductDTO">
+		SELECT *
+		FROM wproduct
+	</select>
+	
+	<select id="getByPname" parameterType="String" resultType="ProductDTO">
+	<!-- pname 값은 중복 없이 입력하기 -->
+		SELECT *
+		FROM
+			wproduct
+		WHERE
+			pname = #{pname}
+	</select>
+	
+</mapper>

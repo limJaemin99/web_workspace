@@ -14,7 +14,36 @@
 
 # mybatis 소스파일
 	- SqlSessionBean.java	: 개발자가 작성한 파일. SqlSession 구현 객체를 생성하는것이 목적.
-	- db.properties			: 
-	- mybatis-config.xml	: 
-	- orders.xml			: 
+	- mybatis-config.xml	: DB 연결 설정을 저장한 파일.
+	- db.properties			: driver , URL , user name , password 정보를 저장
+	- orders.xml			: SQL 매퍼 역할을 하는 파일.
+	
+	※ XML : eXtensible Markup Language (확장된 마크업 언어)
+	● HTML : 정해진 태그를 사용한다.
+	● XML : 태그를 목적에 맞게 등록해서 데이터를 저장한다. (태그의 목적에 따라 태그 이름도 임의로 정할 수 있음)
+			또는, 태그의 설정된 내용에 따라 자바 객체를 생성하기도 한다.
+	※ mybatis XML 은 !DOCTYPE 태그 안에 XML 문서 타입을 정의하는 URL 이 꼭 필요하다 ★★★★★
+		ㄴ 목적에 맞게 태그를 사용할 수 있게 해준다.
 
+# SQL 매퍼 파일	★★★★★★★★★★ 중요 ★★★★★★★★★★
+	- select , insert , update , delete 등이 태그 이름.
+		실행할 SQL 에 따라 태그를 선택
+	- id 속성 : 개발자가 정의하는 SQL 식별 문자열
+	- parameterType : SQL 실행에 필요한 파라미터(인자) 데이터 타입 알려주기
+	- resultType : SQL 실행 후에 리턴되는 결과의 데이터 타입 알려주기
+		※ 위의 2가지 타입 예시 : String , int , long , java.util.Map , sample.dto.OrderDTO , ...
+	- 최상위 mapper 태그 : namespace 속성으로 mapper 파일을 구분하게 한다.
+		※ id 가 동일한 값일 경우 namespace 로 구분하기
+	- 동적 SQL : if 태그로 조건을 검사하여 실행할 SQL 을 선택
+	- DB 테이블의 [컬럼]과 자바 객체의 [필드]를 자동 매핑 : select 기준으로 이름으로 매핑하므로 필드명,컬럼명을 일치시켜야 한다.
+
+# mybatis 에서 SQL 을 실행시키는 객체 : SqlSession 인터페이스의 구현 객체
+	● SqlSession 의 메소드
+		- insert , update , delete 의 SQL 메소드는 이름이 SQL 명령과 동일하다.
+		- selectList(여러개 행이 조회될 때 사용) , selectOne(PK 로 조회할 때 사용_1개 행이 조회)
+
+# SqlSession 을 만드는 과정 - SqlSessionBean 클래스 참고
+	● 아래 3줄이 핵심코드 (출처 - https://mybatis.org/mybatis-3/getting-started.html )
+		String resource = "org/mybatis/example/mybatis-config.xml";
+		InputStream inputStream = Resources.getResourceAsStream(resource);
+		SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
