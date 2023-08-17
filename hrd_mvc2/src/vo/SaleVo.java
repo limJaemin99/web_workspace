@@ -6,8 +6,7 @@ public class SaleVo {
 	private String agrade;
 	private int psum;
 	
-	public SaleVo() {
-	}
+	public SaleVo() {}
 	//생성자
 	public SaleVo(int custno, String custname, String agrade, int psum) {
 		super();
