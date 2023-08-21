@@ -8,6 +8,7 @@
 <meta charset="UTF-8">
 <title>우리 북카페</title>
 	<link rel="stylesheet" href="${pageContext.request.contextPath }/css/list.css?v=3">  
+	<!-- ${pageContext.request.contextPath} 는 /jspBoard : 프로젝트 이름 , 웹 서비스 이름 -->
 </head>
 <body>
 <main id="list">
@@ -66,6 +67,8 @@
 		<!-- 글쓰기 할때 로그인을 하도록 한다면 자바스크립트 함수로 로그인 여부 확인합니다. -->
 		<a href="javascript:write()" class="button">글쓰기</a>
 		<a href="${pageContext.request.contextPath}" class="button" >홈</a>
+		<!-- contextPath 로 URL 요청하면 웰컴 리스트에 해당하는 index.jsp 로 알아서 요청/화면출력 -->
+			<!-- ▲ web.xml -->
 	</div>
 </div>
 <script type="text/javascript">

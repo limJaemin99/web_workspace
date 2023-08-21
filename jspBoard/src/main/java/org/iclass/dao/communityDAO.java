@@ -75,5 +75,14 @@ public class communityDAO {
 		return count;
 	}
 	
+	public long insert(Community vo) {
+		SqlSession mapper = SqlSessionBean.getSession();
+		mapper.insert("community.insert",vo);
+		mapper.commit();	//insert,update,delete 는 commit 필수 ★★★★★
+		mapper.close();
+		
+		//매퍼 xml 에서 selectKey 로 시퀀스 값을 vo 객체 idx 프로퍼티에 저장시켰다.
+		return vo.getIdx();
+	}
 	
 }
