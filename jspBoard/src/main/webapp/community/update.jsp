@@ -1,3 +1,4 @@
+<%@page import="org.iclass.dto.BookUser"%>
 <%@page import="java.time.LocalDate"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.HashMap"%>
@@ -17,6 +18,12 @@
 </head>
 <body>
 <%
+	BookUser user = (BookUser)session.getAttribute("user");
+	if(user==null) {	//로그인이 안된 상태
+		throw new IllegalAccessException();	//임의로 오류를 발생시킴
+		//IllegalAccessException : 일반적으로 임의의 Exception 발생시킬 때 많이 사용한다.
+	}
+
 	int idx=0;
 	int pageNo=0;
 	if(request.getParameter("idx") != null) {
@@ -33,6 +40,9 @@
 	communityDAO dao = communityDAO.getCommunityDAO();
 	Community vo = dao.selectByIdx(idx);	//idx 글 조회하기
 	
+	if(!user.getId().equals(vo.getWriter()))	//로그인한 사용자와 글쓴이가 다를 때
+			throw new IllegalAccessException();
+	
 //	[1]
 	request.setAttribute("vo", vo);
 //	[2]
@@ -40,8 +50,6 @@
 	
 	pageContext.forward("updateView.jsp");	//화면에 애트리뷰트와 함께 요청 전달
 %>
-
-
 
 </body>
 </html>

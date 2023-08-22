@@ -48,9 +48,7 @@
 						 	[방법 1] 의 pre 태그 안에서는 모든 문자들을 그대로 출력시킨다.
 					-->
 					<li>
-						<pre>
-							<c:out value="${vo.content}" />
-						</pre>
+						<pre><c:out value="${vo.content}" /></pre>
 					</li>
 				</ul>
 			</li>

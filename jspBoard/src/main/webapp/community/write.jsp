@@ -25,6 +25,12 @@
 						<input type="text" name="title" size="50" required>
 					</td>
 				</tr>
+				<tr>	<!-- 아래 작성자는 문제점을 발견하기 위한 추가 사항이고, 나중에 삭제할 예정 -->
+					<th>작성자</th>
+					<td>
+						<input type="text" name="writer" size="50" value="${user.id}">
+					</td>
+				</tr>
 				<tr>
 					<th>내용</th>	<!-- textarea 의 크기 : rows="30" cols="80" -->
 					<td>
