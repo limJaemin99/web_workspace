@@ -1,3 +1,6 @@
+<%@page import="org.iclass.dto.CommunityComments"%>
+<%@page import="java.util.List"%>
+<%@page import="org.iclass.dao.communityCommentsDAO"%>
 <%@page import="org.iclass.dto.Community"%>
 <%@page import="org.iclass.dao.communityDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -24,6 +27,13 @@
 	request.setAttribute("vo", vo);
 //	[2]
 	request.setAttribute("page", pageNo);
+	
+//	[3] 댓글 목록 전달하기
+	communityCommentsDAO cmtdao = communityCommentsDAO.getCommunityCommentsDAO();
+	List<CommunityComments> cmtlist = cmtdao.commentsList(idx);
+	
+	request.setAttribute("cmtlist", cmtlist);
+	
 	
 	pageContext.forward("readView.jsp");	//화면에 애트리뷰트와 함께 요청 전달
 %>

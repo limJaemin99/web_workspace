@@ -10,7 +10,7 @@
 </head>
 <body>
 <% 
-	request.setCharacterEncoding("UTF-8");	//인코딩 ★★★★★★★★★★
+	//request.setCharacterEncoding("UTF-8");	//EncodingFilter.java 에서 인코딩 처리
 	
 	String ip = request.getRemoteAddr();	//클라이언트 ip 가져오기
 	

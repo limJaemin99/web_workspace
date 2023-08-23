@@ -7,7 +7,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>우리 북카페</title>
-	<link rel="styleSheet" href="${pageContext.request.contextPath}/css/read.css?v=3">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/read.css?v=3">
 </head>
 <body>
 <main id="read">
@@ -80,15 +80,89 @@
          		}   
       		}
    		</script>
-   		<hr>
+
+	<hr>	<!--댓글 목록 시작 -->
+	<!-- 댓글 등록/삭제를 위한 form.(댓글 수정은 구현 안한다) -->
+	<form action="commentAction.jsp" method="post">
+	<!-- 필요한 파라미터. 화면에는 표시 안함 -->
+	<input type="hidden" name="mref" value="${vo.idx}">	<!-- 댓글 추가 할 메인글의 idx(댓글 테이블 mref / 고정값) -->
+	<input type="hidden" name="idx" value="0">	<!-- 삭제할 댓글의 idx(고정값X)는 executeCmt 함수에서 설정 -->
+	<input type="hidden" name="f" value="0">	<!-- value 가 1이면 등록, 2면 삭제 -->
+	<input type="hidden" name="page" value="${page}">	<!-- 현재 페이지 번호 전달 -순서8) -->
+	<ul>
+		<li>
+			<ul class="row">
+				<li>작성자</li>
+				<li><input name="writer" class="input" value="${user.id}" readonly></li>
+			</ul>
+		</li>
+		<li>
+			<ul style="display: flex;">
+				<li>
+					<textarea rows="5" cols="80" name="content"
+						style="resize: none; margin-right: 20px;"
+						placeholder="로그인 후에 댓글을 작성하세요." class="input"></textarea>
+				</li>
+				<li style="align-self: center; margin-bottom: 20px;">
+					<c:if test="${sessionScope.user != null}">
+						<button type="button" onclick="executeCmt(1,0)">저장</button>
+							<!-- 2번째 인자는 댓글 등록에서는 필요없음. 아무값 0 -->
+					</c:if>
+					<c:if test="${sessionScope.user == null }">
+						<button type="button" onclick="location.href='../login.jsp'">로그인</button>
+					</c:if>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<span>댓글</span>
+			<span>[<c:out value="${vo.commentCount}"/>]</span>	<!-- 댓글 갯수 -->
+			<hr>
+		</li>
+		<!-- 댓글 목록 : cmtlist 애트리뷰트 필요 -->
+		<c:forEach var="cmt" items="${cmtlist}">
+			<li>
+				<ul class="crow">
+					<li><c:out value="${cmt.writer}"/></li>
+					<li><c:out value="${cmt.ip}"/></li>
+					<li><c:out value="${cmt.createdAt}"/></li>
+				<!-- session 에 저장된 user 애트리뷰트의 id 와 작성자의 id 가 같으면 삭제 버튼 보이기 -->
+				<c:if test="${user.id == cmt.writer}">
+					<li><a href="javascript:executeCmt(2,'${cmt.idx}')">삭제</a></li>
+							<!-- 함수의 2번째 인자는 삭제할 댓글의 idx -->
+				</c:if>
+				</ul>
+			</li>
+			<li>
+				<pre class="cmtcontent"><c:out value="${cmt.content}" /></pre>
+			</li>
+		</c:forEach>
+	</ul>
+	</form>
+   	<hr>
    </div>	<!-- 메인글 출력 끝 -->
+   <script type="text/javascript">
+   		function executeCmt(fval,cidx) {	//첫번째는 등록 or 삭제 기능	//두번째는 삭제할 댓글 idx
+   			const frm = document.forms[0]
+   			if(fval === 1) {	//댓글 등록. (== ▶ 값만 검사 | === ▶ 타입까지 검사)	//'1' == 1 (참) | '1' === 1 (거짓/타입체크)
+   				if(frm.content.value == '') {
+   					alert('글 내용은 필수 입력입니다.')
+   					frm.content.focus()
+   					return
+   				} else {
+   					frm.f.value = fval
+   					frm.submit()	//댓글 저장
+   				}
+   			}
+   			
+   			if(fval === 2) {
+   				frm.idx.value = cidx
+   				frm.f.value = fval
+   				frm.submit()
+   			}
+   				
+		}
+   </script>
 </main>
-   
-   <!--댓글 목록 시작 -->
-		
-		
-	
-	
-	
 </body>
 </html>

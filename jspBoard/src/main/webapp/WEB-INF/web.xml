@@ -10,7 +10,29 @@
     <welcome-file>default.htm</welcome-file>
   </welcome-file-list>
   
-  <!-- 오류 페이지 설정하기 :모든 구현을 끝내고 마지막에 작성하기★★★★★ -->
+<!-- @WebFilter 애노테이션 대신 사용 가능 (Day03 까지의 문제점.txt 참고)
+※ 아래 내용은 SessionFilter.java
+  <filter>
+  	<filter-name>sessionFilter</filter-name>
+  	<filter-class>org.iclass.filter.SessionFilter</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>sessionFilter</filter-name>	※ 위의 filter name 과 동일하게
+  	<url-pattern>*.jsp</url-pattern>
+  </filter-mapping>
+
+※ 아래 내용은 EncodingFilter.java
+  <filter>
+  	<filter-name>EncodingFilter</filter-name>
+  	<filter-class>org.iclass.filter.SessionFilter</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>EncodingFilter</filter-name>	※ 위의 filter name 과 동일하게
+  	<url-pattern>*.jsp</url-pattern>
+  </filter-mapping>
+-->
+  
+  <!-- 사용자의 잘못된 접근 오류 페이지 설정하기 :모든 구현을 끝내고 마지막에 작성하기★★★★★ -->
   	<!-- ▶ 이유 : 오류를 발견해야 디버깅 할 수 있음 -->
   <!-- 모든 Exception 이 생겼을 때 error.jsp 로 URL 이동하기 -->
   <error-page>

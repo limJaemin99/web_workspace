@@ -33,7 +33,7 @@
       <!-- Modal footer -->
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" onclick="location.href='${pageContext.request.contextPath}'">Close</button>
-      </div>
+      </div>	<!-- ▲ welcome page 가 index.jsp 이므로 버튼을 누르면 index.jsp 로 이동한다 -->
 
     </div>
   </div>

@@ -3,23 +3,39 @@
 ### 지금까지의 문제점 ###
 
 1. 수정 버튼은 로그인한 사용자의 글만 보이지만
-	URL 에서 http://192.168.0.145:8081/jspBoard/community/update.jsp?idx=863&page=6 의
+	URL 에서 http://localhost:8082/jspBoard/community/update.jsp?idx=863&page=6 의
 	idx 를 '로그인한 사용자의 글이 아닌' 아무 값이나 입력하면 수정이 가능하다.
 	// 또는 '로그인을 하지 않아도 아무 글이나' 수정이 가능하다.
-
+	
+	
 2. 로그인을 안하면 글쓰기에서 로그인하도록 하지만
-	URL 에서 http://192.168.0.145:8081/jspBoard/community/writeAction.jsp?title=테스트&content=ㅋㅋㅋㅋ&writer=hongGD 를
+	URL 에서 http://localhost:8082/jspBoard/community/writeAction.jsp?title=테스트&content=ㅋㅋㅋㅋ&writer=hongGD 를
 	로그인하지 않은 상태에서 직접 URL 을 입력하고 실행하면 가능하다.
 
-	※ [중요] 글 번호 기본키값 대신에 행 번호(rownum)을 글 목록에 표시하는것을 추천한다.
-	
+	※ [중요] 개선 : 글 번호 표시 기본키값 대신에 행번호(rownum)를 글 목록에 표시하는것을 추천한다.
+			▶ post 방식으로 바꿀 것 : update.jsp , delete.jsp
+			▶ post 방식으로 요청이 왔는지 확인하고 처리하기 - updateAction.jsp , writeAction.jsp , loginAction.jsp
+			
 	해결 방법 [1] : 항상 먼저 update.jsp , updateAction.jsp , writeAction.jsp 등 필요한 곳에서 session 을 검사한다.
 			▶ 로그인 세션 저장값을 비교해서 일치하지 않은 exception 을 발생시킨다.
 			▶ exception 또는 404 오류가 발생했을 때 보일 페이지 error.jsp 를 web.xml 에 설정
 		
-	해결 방법 [2] : 모든 필요한 소스파일에 new IllegalAccessException(); 처리하는 것은 번거로운 일이다.
+	해결 방법 [2] : 모든 필요한 소스파일에 session 검사 후 new IllegalAccessException(); 처리하는 것은 번거로운 일이다.
 			▶ 웹 컨테이너에는 필터(filter) : 요청에 대한 처리를 하기 전에, 요청에 대한 검사와 사전작업을 할 수 있다.
-
+										응답에 대한 전송을 하기 전에, 응답에 대한 검사와 사전 작업을 할 수 있다.
 [용어 설명]
 ● 인증 : 로그인과 같이 사용자 확인
 ● 인가 : 인증 후 권한. 예를 들면 로그인 사용자가 작성한 글만 수정 권한이 있다.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# 필터 등록하기
+방법 [1] : @WebFilter 애노테이션으로 하기
+방법 [2] : web.xml 에서 하기(필터 실행 순서를 지정할 수 있다)
+
+
+# SessionFilter 구현하기
+	▶ 메뉴로 클릭해서 사용자 기능을 사용하는 것이 정상적이지만,
+		어떤 사용자는 아무 의미 없이 장난 또는 나쁜 의도로 URL 에 직접 주소를 입력하여 실행 할 수도 있기 때문
+	▶ 잘못된 요청을 받지 않도록 session 검사를 하기 위한 필터를 구현해보기
+	- 로그인 했을 때 접근할 수 없는 URL 은 index.jsp 로 redirect시키기
+	- 로그인 하지 않았을 때 접근할 수 없는 URL 은 index.jsp 로 redirect

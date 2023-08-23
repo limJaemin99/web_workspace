@@ -12,7 +12,7 @@
 </head>
 <body>
 <% 
-	request.setCharacterEncoding("UTF-8");	//인코딩 ★★★★★★★★★★
+	//request.setCharacterEncoding("UTF-8");	//EncodingFilter.java 에서 인코딩 처리
 	
 	BookUser writer = (BookUser)session.getAttribute("user");
 	//아래 작성자는 문제점을 발견하기 위한 추가 사항이고, 나중에 삭제할 예정	//아래와 같이 하면 세션 비교 코드가 필요함
