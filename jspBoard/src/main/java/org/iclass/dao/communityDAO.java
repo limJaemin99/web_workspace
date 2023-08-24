@@ -70,6 +70,7 @@ public class communityDAO {
 	public int delete(long idx) {
 		SqlSession mapper = SqlSessionBean.getSession();
 		int count = mapper.delete("community.delete",idx);
+		mapper.commit();
 		mapper.close();
 		
 		return count;

@@ -31,7 +31,8 @@
 	<li>
 		<ul  class="row">
 			<li>
-				<c:out value="${vo.idx }"/>
+				<%-- <c:out value="${vo.idx }"/> --%>
+				<c:out value="${vo.r }"/>	<!-- 글 번호 대신 rownum으로 출력하기 -->
 			</li>
 			<li><a href="read.jsp?idx=${vo.idx }&page=${paging.currentPage}" class="title">  
 												<!-- 현재페이지 번호 전달 시작 -순서1) -->

@@ -15,6 +15,7 @@ import lombok.ToString;
 @Builder
 public class Community {
 	//필드,객체의 프로퍼티
+	private long r;
 	private long idx;
 	private String writer;	//로그인 id 이용하여 작성자 저장
 	private String title;
